@@ -1,36 +1,36 @@
 <div class="container form-padrao rounded">
     <h3 class="form-titulo">Create an Account</h3> 
-    <form>
+    <form [formGroup]="formRegister" (ngSubmit)="onSubmitRegister()">
         <div class="form-row">
             <div class="form-group col-md-6">
               <label for="firstName">First Name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="First Name">
+              <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="First Name">
             </div>
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+              <input type="text" formControlName="lastName" class="form-control" id="lastName" placeholder="Last Name">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-8">
               <label for="Username">Username</label>
-              <input type="text" class="form-control" id="Username">
+              <input type="text" formControlName="username" class="form-control" id="Username">
             </div>
             <div class="form-group col-md-4">
                 <label for="Birth">Birth</label>
-                <input type="date" class="form-control" id="Birth">
+                <input type="date" formControlName="birth" class="form-control" id="Birth">
               </div>
           </div>
           <div class="form-row"> 
             <div class="form-group col-md-12">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" id="Email" placeholder="Email">
+                <input type="email" formControlName="email" class="form-control" id="Email" placeholder="Email">
             </div>
           </div>
           <div class="form-row"> 
             <div class="form-group col-md-12">
                 <label for="Password">Password</label>
-                <input type="password" class="form-control" id="Password" placeholder="Password">
+                <input type="password" formControlName="password" class="form-control" id="Password" placeholder="Password">
             </div>
           </div>
           <div class="form-group">
@@ -42,6 +42,6 @@
             </div>
           </div>
           <button type="submit" class="btn btn-dark">Submit</button>
-          <a class="redirect-register" routerLink="login">I already have an account</a>
+          <a class="redirect-register" routerLink="/login">I already have an account</a>
     </form>
 </div>
