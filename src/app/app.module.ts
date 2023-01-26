@@ -7,18 +7,22 @@ import { NavegationComponent } from './components/navegation/navegation.componen
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MovieComponent } from './components/movie/movie.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavegationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
