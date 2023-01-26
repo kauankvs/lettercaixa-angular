@@ -32,6 +32,8 @@ export class RegisterComponent {
 
   onSubmitRegister(): void {
     let form: FormData = this.transformInFormData(this.formRegister);
+    //http request
+    //this.formRegister.reset()
   }
 
 }

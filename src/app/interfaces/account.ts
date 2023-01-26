@@ -4,6 +4,6 @@ export interface Account {
     email: string;
     password: string;
     profilePicture?: string;
-    birth: Date;
+    birth: string;
     username: string;
 }
