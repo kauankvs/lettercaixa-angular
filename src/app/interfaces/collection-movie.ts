@@ -1,8 +1,9 @@
 import { Data } from "@angular/router"
 import { Movie } from "./movie"
 
-export interface CollectionMovies {
-    dates: {
+export interface CollectionMovie {
+    dates: 
+    {
         maximun: Data,
         minimun: Data,
     },

@@ -1,28 +1,25 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SettingsService } from './settings.service';
-import { CollectionMovies } from '../interfaces/collection-movies';
+import { CollectionMovie } from '../interfaces/collection-movie';
 import { Observable } from 'rxjs';
+import { CollectionPerson } from '../interfaces/collection-person';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExternalApiMovieService {
-  TMDB_Url: string = 'https://api.themoviedb.org/3/movie/';
+  TMDB_Url: string = 'https://api.themoviedb.org/3/';
 
   constructor(private client: HttpClient, private settings: SettingsService) { }
 
-  getCollectionOfMovies(search: string, page: number): Observable<CollectionMovies> {
-    let URL = this.TMDB_Url + search + '?api_key=' + this.settings.key + '&page=' + page;
-    return this.client.get<CollectionMovies>(URL);
-    
-    /*.subscribe({
-      next: (data) => {
-        data.results.forEach((data) => {
-          console.log(data.poster_path);
-        })
-      },
-      error: (data: any) => console.log(data),
-    });*/
+  getCollectionOfMovies(search: string, page: number): Observable<CollectionMovie> {
+    let URL = this.TMDB_Url + 'movie/' + search + '?api_key=' + this.settings.key + '&page=' + page;
+    return this.client.get<CollectionMovie>(URL);
+  }
+
+  getPopularArtists(page: number): Observable<CollectionPerson> {
+    let URL = this.TMDB_Url + 'person/popular' + '?api_key=' + this.settings.key + '&page=' + page;
+    return this.client.get<CollectionPerson>(URL);
   }
 }

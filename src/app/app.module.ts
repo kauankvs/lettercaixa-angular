@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovieComponent } from './components/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ArtistComponent } from './components/artist/artist.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     MovieComponent,
+    ArtistComponent,
   ],
   imports: [
     BrowserModule,

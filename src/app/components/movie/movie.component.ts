@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CollectionMovies } from 'src/app/interfaces/collection-movies';
+import { CollectionMovie } from 'src/app/interfaces/collection-movie';
 import { Movie } from 'src/app/interfaces/movie';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 
@@ -20,7 +20,7 @@ export class MovieComponent implements OnInit {
     this.service.getCollectionOfMovies(search, page).subscribe({
       next: (data) => {
          this.filmes = data.results
-         console.log(data.results);
+         console.log(data);
       },
       error: (data) => console.error(data)
     });
