@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MovieComponent } from './components/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistComponent } from './components/artist/artist.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ArtistComponent } from './components/artist/artist.component';
     RegisterComponent,
     MovieComponent,
     ArtistComponent,
+    MovieDetailComponent,
   ],
   imports: [
     BrowserModule,
