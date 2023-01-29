@@ -11,6 +11,7 @@ import { MovieComponent } from './components/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistComponent } from './components/artist/artist.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
     MovieComponent,
     ArtistComponent,
     MovieDetailComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

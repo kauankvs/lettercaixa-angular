@@ -21,9 +21,9 @@ export class LetterboxApiMovieService {
     return this.client.post<string>(URL_LOGIN, data, { responseType: 'text' as 'json' });
   }
 
-  myAccountRequest(token: string): Observable<Account> {
+  getAccountRequest(token: string): Observable<Account> {
     let auth: string = "Bearer " + token;
-    const URL_MY_ACCOUNT: string = URL + 'profile/my-account';
-    return this.client.get<Account>(URL_MY_ACCOUNT, { withCredentials: true, headers: { 'Authorizarion': auth } });
+    const URL_MY_ACCOUNT: string = this.URL + 'profile/my-account';
+    return this.client.get<Account>(URL_MY_ACCOUNT, { withCredentials: true, headers: { 'Authorization': auth } });
   }
 }

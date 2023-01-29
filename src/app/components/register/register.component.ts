@@ -37,7 +37,7 @@ export class RegisterComponent {
       next: (data) => console.log(data),
       error: (data) => console.log(data),
     });
-    //this.formRegister.reset()
+    this.formRegister.reset()
   }
 
 }
