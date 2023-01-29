@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
     password: "",
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private service: LetterboxApiMovieService) { }
 
   transformInFormData(form: FormGroup): FormData {
     let formData: FormData = new FormData();
@@ -22,8 +23,11 @@ export class LoginComponent {
   }
 
   onSubmitLogin(): void {
-    let form: FormData = this.transformInFormData(this.formLogin);
-    //http request
+    let data: FormData = this.transformInFormData(this.formLogin);
+    this.service.loginRequest(data).subscribe({
+      next: (data) => console.log(data),
+      error: (data) => console.log(data),
+    });
     //this.formLogin.reset()
   }
 }
