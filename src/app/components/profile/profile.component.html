@@ -1,3 +1,6 @@
-<div *ngIf="profile != null">
-    <p>{{profile.firstName}}</p>
+<div class="container form-padrao" *ngIf="profile != null">
+    <p>Username: {{ profile.username }}</p>
+    <p>Nome: {{ profile.firstName }} {{ profile.lastName }}</p>
+    <p>Email: {{ profile.email }}</p>
+    <p>Birth: {{ profile.birth | date: 'dd/MM/yyyy' }}</p>
 </div>
