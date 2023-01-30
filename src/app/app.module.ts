@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArtistComponent } from './components/artist/artist.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FavoriteComponent } from './components/favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ArtistComponent,
     MovieDetailComponent,
     ProfileComponent,
+    FavoriteComponent,
   ],
   imports: [
     BrowserModule,

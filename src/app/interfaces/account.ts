@@ -1,3 +1,5 @@
+import { Favorite } from "./favorite";
+
 export interface Account {
     firstName: string;
     lastName: string;
@@ -6,4 +8,5 @@ export interface Account {
     profilePicture?: string;
     birth: string;
     username: string;
+    favorite?: Favorite;
 }
