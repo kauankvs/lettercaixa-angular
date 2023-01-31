@@ -24,7 +24,7 @@ export class ExternalApiMovieService {
   }
 
   
-  searchForMovie(search: string, page: number) {
+  searchForMovie(search: string | undefined, page: number) {
     const URL_SEARCH_MOVIE: string = this.TMDB_Url + 'search/movie' + '?api_key=' + this.settings.key + '&query=' + search + '&page=' + page;
     this.client.get(URL_SEARCH_MOVIE).subscribe((data) => console.log(data));
   }
