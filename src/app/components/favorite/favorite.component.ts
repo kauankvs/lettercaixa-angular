@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Favorite } from 'src/app/interfaces/favorite';
+import { Router, withHashLocation } from '@angular/router';
+import { Account } from 'src/app/interfaces/account';
 import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -10,25 +10,28 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  favorite?: Favorite;
+  account?: Account;
+  
+  constructor(private service: LetterboxApiMovieService, private storageService: LocalStorageService) { }
 
-  constructor(private service: LetterboxApiMovieService, private storageService: LocalStorageService, private router: Router) { }
+  ngOnInit(): void {
+    let token = this.storageService.getToken();
+    this.tryToLogInAccount(token);
+    this.storageService.removeTokenAfterExpirationAsync();
+  }
 
-  async ngOnInit(): Promise<void | Error> {
-    let token: string | null = this.storageService.getToken();
+  async tryToLogInAccount(token: string | null): Promise<void> {
     if(token != null)
     {
       this.service.getAccountRequest(token).subscribe({
         next: (data) => {
-          console.log(data.favorite);
-          this.favorite = data.favorite;
+          console.log(data);
+          this.account = data;
         },
-        error: (err) => console.error(err)
+        error: (err) => {
+          console.log(err);
+        }
       });
-      await this.storageService.removeTokenAfterExpirationAsync();
-      return;
     }
-    window.alert('User not logged in!');
-    this.router.navigateByUrl('/login');
   }
 }

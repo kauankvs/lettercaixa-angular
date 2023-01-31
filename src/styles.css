@@ -7,7 +7,8 @@ body {
     width: 30%;
     height: 30%;
     padding: 15px 20px;
-    margin-top: 10%;   
+    margin-top: 10%;
+    font-family: Helvetica, sans-serif;   
 }
 
 .form-titulo {
@@ -38,4 +39,14 @@ body {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.not-logged {
+    text-align: center;
+    letter-spacing: 0.05em;
+    font-family: Helvetica, sans-serif;
+}
+
+.title-not-logged {
+    margin-bottom: 25px;
 }

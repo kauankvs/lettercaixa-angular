@@ -9,5 +9,4 @@ export interface Favorite {
     movieEight: number,
     movieNine: number,
     movieTen: number,
-    profileId: number,
 }

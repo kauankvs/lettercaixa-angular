@@ -1,1 +1,10 @@
-<p>favorite works!</p>
+<div class="collection" *ngIf="account != null">
+    <div class="display">
+        <img src="https://image.tmdb.org/t/p/w200{{null}}" class="display">
+    </div>
+</div>
+<div class="container form-padrao rounded not-logged" *ngIf="account == null">
+    <h4 class="title-not-logged">User not logged in.</h4>
+    <p>If you already have an account - <a routerLink="/login">Login</a></p>
+    <p>If you don't have an account - <a routerLink="/register">Create</a></p>
+</div>

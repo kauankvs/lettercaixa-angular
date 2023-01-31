@@ -12,10 +12,16 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class ProfileComponent implements OnInit {
   profile?: Account;
 
-  constructor(private service: LetterboxApiMovieService, private storageService: LocalStorageService, private router: Router) { }
+  constructor(private service: LetterboxApiMovieService, private storageService: LocalStorageService) { }
 
-  async ngOnInit(): Promise<void | Error> {
-    let token: string | null = this.storageService.getToken();
+  ngOnInit(): void {
+    let token = this.storageService.getToken();
+    this.tryToLogInAccount(token);
+    this.storageService.removeTokenAfterExpirationAsync();
+  }
+ 
+  tryToLogInAccount(token: string | null): void 
+  {
     if(token != null)
     {
       this.service.getAccountRequest(token).subscribe({
@@ -23,13 +29,8 @@ export class ProfileComponent implements OnInit {
           console.log(data);
           this.profile = data;
         },
-        error: (err) => console.error(err)
+        error: (error) => console.log(error)
       });
-      await this.storageService.removeTokenAfterExpirationAsync();
-      return;
     }
-    window.alert('User not logged in!');
-    this.router.navigateByUrl('/login');
   }
-
 }
