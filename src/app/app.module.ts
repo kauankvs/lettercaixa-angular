@@ -13,6 +13,7 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
+import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FavoriteComponent } from './components/favorite/favorite.component';
     MovieDetailComponent,
     ProfileComponent,
     FavoriteComponent,
+    SearchMovieComponent,
   ],
   imports: [
     BrowserModule,

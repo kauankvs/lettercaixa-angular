@@ -26,4 +26,5 @@ export class LetterboxApiMovieService {
     const URL_MY_ACCOUNT: string = this.URL + 'profile/my-account';
     return this.client.get<Account>(URL_MY_ACCOUNT, { withCredentials: true, headers: { 'Authorization': auth } });
   }
+
 }
