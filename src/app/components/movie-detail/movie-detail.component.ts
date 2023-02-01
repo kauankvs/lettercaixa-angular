@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -7,13 +8,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-  id?: number;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private service: ExternalApiMovieService) { }
 
-  ngOnInit(): void {
-=    this.route.queryParams.subscribe(params => this.id = params['id']);
-    
+  async ngOnInit(): Promise<void> {
+    let id: number | undefined;
+    this.route.queryParams.subscribe(params => id = params['id']);
+    this.service.getMovieById(id).subscribe({
+      next: (data) => console.log(data),
+      error: (err) => console.error(err),
+    });
   }
   
 }

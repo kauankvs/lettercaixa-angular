@@ -23,15 +23,14 @@ export class ExternalApiMovieService {
     let URL = this.TMDB_Url + 'person/popular' + '?api_key=' + this.settings.key + '&page=' + page;
     return this.client.get<CollectionPerson>(URL);
   }
-
   
   searchForMovie(search: string | undefined, page: number) {
     const URL_SEARCH_MOVIE: string = this.TMDB_Url + 'search/movie' + '?api_key=' + this.settings.key + '&query=' + search + '&page=' + page;
     this.client.get(URL_SEARCH_MOVIE).subscribe((data) => console.log(data));
   }
 
-  getMovieById(id: number): Observable<Movie> {
-    const URL_MOVIE_DETAILS: string = this.TMDB_Url + 'search/movie' + id + '?api_key=' + this.settings.key;
+  getMovieById(id: number | undefined): Observable<Movie> {
+    const URL_MOVIE_DETAILS: string = this.TMDB_Url + 'movie/' + id + '?api_key=' + this.settings.key;
     return this.client.get<Movie>(URL_MOVIE_DETAILS);
   }
 }
