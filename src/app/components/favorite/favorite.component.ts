@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, withHashLocation } from '@angular/router';
+import { Route, Router, withHashLocation } from '@angular/router';
 import { Account } from 'src/app/interfaces/account';
 import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -12,7 +12,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class FavoriteComponent implements OnInit {
   account?: Account;
   
-  constructor(private service: LetterboxApiMovieService, private storageService: LocalStorageService) { }
+  constructor(private service: LetterboxApiMovieService, private storageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     let token = this.storageService.getToken();
@@ -33,5 +33,9 @@ export class FavoriteComponent implements OnInit {
         }
       });
     }
+  }
+
+  seeMoviesDetails(): void {
+    this.router.navigate(['/movie/' + null], { queryParams: { query: null } });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CollectionMovie } from 'src/app/interfaces/collection-movie';
 import { Movie } from 'src/app/interfaces/movie';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
@@ -12,7 +12,7 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
 export class MovieComponent implements OnInit {
   filmes?: Movie[];
 
-  constructor(private service: ExternalApiMovieService, private route: ActivatedRoute) {}
+  constructor(private service: ExternalApiMovieService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     let page: number = 1;
@@ -24,5 +24,9 @@ export class MovieComponent implements OnInit {
       },
       error: (data) => console.error(data)
     });
+  }
+
+  seeMoviesDetails(id: number): void {
+    this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
   }
 }

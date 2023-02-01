@@ -4,6 +4,7 @@ import { SettingsService } from './settings.service';
 import { CollectionMovie } from '../interfaces/collection-movie';
 import { Observable } from 'rxjs';
 import { CollectionPerson } from '../interfaces/collection-person';
+import { Movie } from '../interfaces/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,10 @@ export class ExternalApiMovieService {
   searchForMovie(search: string | undefined, page: number) {
     const URL_SEARCH_MOVIE: string = this.TMDB_Url + 'search/movie' + '?api_key=' + this.settings.key + '&query=' + search + '&page=' + page;
     this.client.get(URL_SEARCH_MOVIE).subscribe((data) => console.log(data));
+  }
+
+  getMovieById(id: number): Observable<Movie> {
+    const URL_MOVIE_DETAILS: string = this.TMDB_Url + 'search/movie' + id + '?api_key=' + this.settings.key;
+    return this.client.get<Movie>(URL_MOVIE_DETAILS);
   }
 }
