@@ -24,9 +24,9 @@ export class ExternalApiMovieService {
     return this.client.get<CollectionPerson>(URL);
   }
   
-  searchForMovie(search: string | undefined, page: number) {
+  searchForMovie(search: string | undefined, page: number): Observable<CollectionMovie> {
     const URL_SEARCH_MOVIE: string = this.TMDB_Url + 'search/movie' + '?api_key=' + this.settings.key + '&query=' + search + '&page=' + page;
-    this.client.get(URL_SEARCH_MOVIE).subscribe((data) => console.log(data));
+    return this.client.get<CollectionMovie>(URL_SEARCH_MOVIE);
   }
 
   getMovieById(id: number | undefined): Observable<Movie> {

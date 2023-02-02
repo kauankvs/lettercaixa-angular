@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Movie } from 'src/app/interfaces/movie';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
-import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.service';
 
 @Component({
   selector: 'app-search-movie',
@@ -10,13 +10,23 @@ import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.s
 })
 export class SearchMovieComponent implements OnInit {
   query?: string | undefined;
+  movies: Movie[] = []
 
-  constructor(private route: ActivatedRoute, private service: ExternalApiMovieService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private service: ExternalApiMovieService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => this.query = params['query']);
-    this.service.searchForMovie(this.query, 1);
+    this.service.searchForMovie(this.query, 1).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.movies = data.results;
+      },
+      error: (err) => console.error(err),
+    });
   } 
 
+  seeMoviesDetails(id: number): void {
+    this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
+  }
   
 }
