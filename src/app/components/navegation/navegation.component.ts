@@ -18,7 +18,9 @@ export class NavegationComponent {
 
   searchMovieSubmit(): void {
     let search: string = this.searchForm.value['search'] as string;
+    this.router.navigateByUrl('/').then(() => {
     this.router.navigate(['/search/' + search], { queryParams: { query: search } });
+    });
     this.searchForm.reset();
   }
 }

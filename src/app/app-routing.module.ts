@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
