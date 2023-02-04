@@ -46,8 +46,8 @@
         </li>
     </ul>
 
-      <form [formGroup]="searchForm" class="form-inline my-2 my-lg-0" (ngSubmit)="searchMovieSubmit()" (keyup.enter)="searchMovieSubmit()">
-        <input formControlName="search" form class="form-control mr-sm-2" type="search" placeholder="Search Movie" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" (ngSubmit)="searchMovieSubmit()" (keyup.enter)="searchMovieSubmit()">
+        <input type="text" class="form-control mr-sm-2" [(ngModel)]="search" name="search" placeholder="Search Movie">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>

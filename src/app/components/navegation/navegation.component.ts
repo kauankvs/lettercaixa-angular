@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,19 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navegation.component.css']
 })
 export class NavegationComponent {
-  searchForm: FormGroup = this.formBuilder.group(
-    {
-      search: '',
-    }
-  )
+  search?: string; 
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router) { }
 
   searchMovieSubmit(): void {
-    let search: string = this.searchForm.value['search'] as string;
     this.router.navigateByUrl('/').then(() => {
-    this.router.navigate(['/search/' + search], { queryParams: { query: search } });
+    this.router.navigate(['/search/' + this.search], { queryParams: { query: this.search } });
     });
-    this.searchForm.reset();
   }
 }
