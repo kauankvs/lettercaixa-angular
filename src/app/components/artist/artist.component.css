@@ -1,0 +1,11 @@
+.search-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+input {
+    max-width: 89.5%;
+}

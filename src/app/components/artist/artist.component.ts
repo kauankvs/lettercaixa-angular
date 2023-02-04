@@ -9,6 +9,7 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
 })
 export class ArtistComponent implements OnInit {
   artists?: Person[];
+  artistSearch?: string;
 
   constructor(private service: ExternalApiMovieService) { }
 
@@ -21,6 +22,10 @@ export class ArtistComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+  }
+
+  searchArtist() {
+    //this.service.searchArtist(this.artistSearch).subscribe({});
   }
 
 }

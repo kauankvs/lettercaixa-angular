@@ -1,3 +1,6 @@
+<form class="search-div">
+    <input type="text" [(ngModel)]="artistSearch" name="artistSearch" class="form-control" placeholder="Search artists" (keypress.enter)="searchArtist()">
+</form>
 <div class="collection">
     <div class="display" *ngFor="let artist of artists">
         <img src="https://image.tmdb.org/t/p/w200{{artist.profile_path}}" class="display">

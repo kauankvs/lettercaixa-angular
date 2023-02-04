@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavegationComponent } from './components/navegation/navegation.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieComponent } from './components/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistComponent } from './components/artist/artist.component';
@@ -33,6 +33,7 @@ import { SearchMovieComponent } from './components/search-movie/search-movie.com
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,7 +30,7 @@
 
     <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link active" routerLink="artists">Trending Artists</a>
+            <a class="nav-link active" routerLink="artists">Artists</a>
         </li>
 
         <li class="nav-item">
@@ -46,7 +46,7 @@
         </li>
     </ul>
 
-      <form [formGroup]="searchForm" class="form-inline my-2 my-lg-0" (ngSubmit)="searchMovieSubmit()">
+      <form [formGroup]="searchForm" class="form-inline my-2 my-lg-0" (ngSubmit)="searchMovieSubmit()" (keyup.enter)="searchMovieSubmit()">
         <input formControlName="search" form class="form-control mr-sm-2" type="search" placeholder="Search Movie" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
