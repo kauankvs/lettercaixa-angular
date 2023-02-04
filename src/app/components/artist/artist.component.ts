@@ -24,7 +24,7 @@ export class ArtistComponent implements OnInit {
     });
   }
 
-  searchArtist() {
+  searchArtist(searchForm: any) {
     let page = 1;
     this.service.searchArtist(this.artistSearch, page).subscribe({
       next: (data) => { 
@@ -34,6 +34,6 @@ export class ArtistComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+    searchForm.reset();
   }
-
 }

@@ -11,9 +11,11 @@ export class NavegationComponent {
 
   constructor(private router: Router) { }
 
-  searchMovieSubmit(): void {
+  searchMovieSubmit(searchForm: any): void {
+    let movieSearch = this.search;
     this.router.navigateByUrl('/').then(() => {
-    this.router.navigate(['/search/' + this.search], { queryParams: { query: this.search } });
+      this.router.navigate(['/search/' + movieSearch], { queryParams: { query: movieSearch } });
     });
+    setTimeout(() => searchForm.resetForm(), 350);
   }
 }
