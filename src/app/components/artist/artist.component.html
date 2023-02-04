@@ -1,8 +1,10 @@
-<form class="search-div">
-    <input type="text" [(ngModel)]="artistSearch" name="artistSearch" class="form-control" placeholder="Search artists" (keypress.enter)="searchArtist()">
+<form class="search-div" (ngSubmit)="searchArtist()" (keypress.enter)="searchArtist()">
+    <input type="text" [(ngModel)]="artistSearch" name="artistSearch" class="form-control" placeholder="Search artists">
 </form>
 <div class="collection">
-    <div class="display" *ngFor="let artist of artists">
-        <img src="https://image.tmdb.org/t/p/w200{{artist.profile_path}}" class="display">
+    <div *ngFor="let artist of artists">
+        <div class="display" *ngIf="artist.profile_path != null">
+            <img src="https://image.tmdb.org/t/p/w200{{artist.profile_path}}" class="display">
+        </div>
     </div>
 </div>

@@ -25,7 +25,15 @@ export class ArtistComponent implements OnInit {
   }
 
   searchArtist() {
-    //this.service.searchArtist(this.artistSearch).subscribe({});
+    let page = 1;
+    this.service.searchArtist(this.artistSearch, page).subscribe({
+      next: (data) => { 
+        console.log(data);
+        this.artists = [];
+        this.artists = data.results
+      },
+      error: (err) => console.log(err),
+    });
   }
 
 }
