@@ -17,14 +17,14 @@ export class MovieComponent implements OnInit {
   constructor(private service: ExternalApiMovieService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    this.getMovies(this.page);
+    this.getMoviesByPage(this.page);
   }
 
   seeMoviesDetails(id: number): void {
     this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
   }
 
-  getMovies(page: number): void {
+  getMoviesByPage(page: number): void {
     let search: string = this.route.snapshot.data['search'];
     this.service.getCollectionOfMovies(search, page).subscribe({
       next: (data) => {

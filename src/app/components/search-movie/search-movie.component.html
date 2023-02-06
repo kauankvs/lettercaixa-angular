@@ -5,3 +5,10 @@
         </div>
     </div>
 </div>
+<div class="nav-pages">
+    <a *ngIf="page - 2 > 0" (click)="getMoviesByPage(page - 2)" class="page-link">{{page - 2}}</a>
+    <a *ngIf="page - 1 > 0" (click)="getMoviesByPage(page - 1)" class="page-link">{{page - 1}}</a>
+    <a (click)="getMoviesByPage(page)" class="page-link">{{page}}</a>
+    <a *ngIf="page + 1 <= totalPages" (click)="getMoviesByPage(page + 1)" class="page-link">{{page + 1}}</a>
+    <a *ngIf="page + 2 <= totalPages" (click)="getMoviesByPage(page + 2)" class="page-link">{{page + 2}}</a>
+</div>
