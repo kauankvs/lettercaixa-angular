@@ -3,3 +3,10 @@
         <img src="https://image.tmdb.org/t/p/w200{{filme.poster_path}}" class="display" (click)="seeMoviesDetails(filme.id)">
     </div>
 </div>
+<div class="nav-pages">
+    <a *ngIf="this.page - 2 > 0" (click)="getMovies(this.page - 2)" class="page-link">{{this.page - 2}}</a>
+    <a *ngIf="this.page - 1 > 0" (click)="getMovies(this.page - 1)" class="page-link">{{this.page - 1}}</a>
+    <a (click)="getMovies(this.page)" class="page-link">{{this.page}}</a>
+    <a *ngIf="this.page + 1 <= this.totalPages" (click)="getMovies(this.page + 1)" class="page-link">{{this.page + 1}}</a>
+    <a *ngIf="this.page + 2 <= this.totalPages" (click)="getMovies(this.page + 2)" class="page-link">{{this.page + 2}}</a>
+</div>

@@ -50,3 +50,22 @@ body {
 .title-not-logged {
     margin-bottom: 25px;
 }
+
+.nav-pages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+.page-link {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 9px 16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border: 0;
+}
+
+.page-link:hover {
+    background: rgba(0, 0, 0, 0.25);
+}

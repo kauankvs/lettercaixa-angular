@@ -10,23 +10,30 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
+  page: number = 1;
+  totalPages: number = 0;
   filmes?: Movie[];
 
   constructor(private service: ExternalApiMovieService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    let page: number = 1;
-    let search: string = this.route.snapshot.data['search'];
-    this.service.getCollectionOfMovies(search, page).subscribe({
-      next: (data) => {
-         this.filmes = data.results
-         console.log(data);
-      },
-      error: (data) => console.error(data)
-    });
+    this.getMovies(this.page);
   }
 
   seeMoviesDetails(id: number): void {
     this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
+  }
+
+  getMovies(page: number): void {
+    let search: string = this.route.snapshot.data['search'];
+    this.service.getCollectionOfMovies(search, page).subscribe({
+      next: (data) => {
+        this.page = page;
+        this.totalPages = data.total_pages;
+        this.filmes = data.results
+        console.log(data);
+      },
+      error: (data) => console.error(data)
+    });
   }
 }
