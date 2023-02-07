@@ -8,31 +8,38 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
   styleUrls: ['./artist.component.css']
 })
 export class ArtistComponent implements OnInit {
-  page?: number;
-  artists?: Person[];
+  page: number = 1;
+  totalPages: number = 1;
+  artists: Person[] = [];
   artistSearch?: string;
+  searchIsUsed: boolean = false;
 
   constructor(private service: ExternalApiMovieService) { }
 
   ngOnInit(): void {
-    let page: number = 1;
-    this.getPopularArtist(page);
+    this.searchIsUsed = false;
+    this.getPopularArtist();
   }
 
-  searchArtist(searchForm: any) {
-    this.page = 1;
-    this.service.searchArtist(this.artistSearch, this.page).subscribe({
+  searchArtist(searchForm: any, page?: number): void {
+    this.searchIsUsed = true;
+    if(page == undefined || page == null) {
+      page = 1;
+    }
+    this.service.searchArtist(this.artistSearch, page).subscribe({
       next: (data) => { 
         console.log(data);
-        this.artists = [];
         this.artists = data.results
+        this.page = page as number;
+        this.totalPages = data.total_pages;
       },
       error: (err) => console.log(err),
     });
     searchForm.reset();
   }
 
-  getPopularArtist(page: number): void {
+  getPopularArtist(): void {
+    let page = 1;
     this.service.getPopularArtists(page).subscribe({
       next: (data) => {
         this.artists = data.results;
