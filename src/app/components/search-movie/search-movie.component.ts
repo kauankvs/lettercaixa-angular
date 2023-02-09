@@ -31,6 +31,7 @@ export class SearchMovieComponent implements OnInit {
         console.log(data);
         this.movies = data.results;
         this.totalPages = data.total_pages;
+        this.page = page;
       },
       error: (err) => console.error(err),
     });

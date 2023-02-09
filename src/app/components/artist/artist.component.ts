@@ -12,7 +12,7 @@ export class ArtistComponent implements OnInit {
   totalPages: number = 1;
   artists: Person[] = [];
   artistSearch?: string;
-  searchIsUsed: boolean = false;
+  searchIsUsed?: boolean;
 
   constructor(private service: ExternalApiMovieService) { }
 
@@ -21,21 +21,17 @@ export class ArtistComponent implements OnInit {
     this.getPopularArtist();
   }
 
-  searchArtist(searchForm: any, page?: number): void {
+  searchArtist(searchForm: any, page: number): void {
     this.searchIsUsed = true;
-    if(page == undefined || page == null) {
-      page = 1;
-    }
     this.service.searchArtist(this.artistSearch, page).subscribe({
       next: (data) => { 
         console.log(data);
-        this.artists = data.results
-        this.page = page as number;
+        this.artists = data.results;
+        this.page = page;
         this.totalPages = data.total_pages;
       },
       error: (err) => console.log(err),
     });
-    searchForm.reset();
   }
 
   getPopularArtist(): void {
