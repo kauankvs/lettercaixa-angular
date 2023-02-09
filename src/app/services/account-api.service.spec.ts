@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LetterboxApiMovieService } from './letterbox-api-movie.service';
+import { AccountApiService } from './account-api.service';
 
 describe('LetterboxApiMovieService', () => {
-  let service: LetterboxApiMovieService;
+  let service: AccountApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LetterboxApiMovieService);
+    service = TestBed.inject(AccountApiService);
   });
 
   it('should be created', () => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account } from 'src/app/interfaces/account';
-import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.service';
+import { AccountApiService } from 'src/app/services/account-api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class ProfileComponent implements OnInit {
   profile?: Account;
 
-  constructor(private service: LetterboxApiMovieService, private storageService: LocalStorageService) { }
+  constructor(private service: AccountApiService, private storageService: LocalStorageService) { }
 
   ngOnInit(): void {
     let token = this.storageService.getToken();

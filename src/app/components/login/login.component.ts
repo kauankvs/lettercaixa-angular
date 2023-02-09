@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.service';
+import { AccountApiService } from 'src/app/services/account-api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent {
     password: "",
   });
 
-  constructor(private formBuilder: FormBuilder, private service: LetterboxApiMovieService, private storageService: LocalStorageService) { }
+  constructor(private formBuilder: FormBuilder, private service: AccountApiService, private storageService: LocalStorageService) { }
 
   transformInFormData(form: FormGroup): FormData {
     let formData: FormData = new FormData();

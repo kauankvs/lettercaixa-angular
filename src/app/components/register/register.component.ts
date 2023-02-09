@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Account } from 'src/app/interfaces/account';
-import { LetterboxApiMovieService } from 'src/app/services/letterbox-api-movie.service';
+import { AccountApiService } from 'src/app/services/account-api.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +18,7 @@ export class RegisterComponent {
     birth: "",
   });;
 
-  constructor(private formBuilder: FormBuilder, private service: LetterboxApiMovieService) { }
+  constructor(private formBuilder: FormBuilder, private service: AccountApiService) { }
 
   transformInFormData(form: FormGroup): FormData {
     let formData: FormData = new FormData();

@@ -6,25 +6,26 @@ import { Account } from '../interfaces/account';
 @Injectable({
   providedIn: 'root'
 })
-export class LetterboxApiMovieService {
-  URL: string = 'https://localhost:7278/api/'
+export class AccountApiService {
+  URL: string = 'https://localhost:7278/api/profile/'
 
   constructor(private client: HttpClient) { }
 
   registerRequest(data: FormData): Observable<Account> {
-    const URL_REGISTER: string = this.URL + 'profile/register';
+    const URL_REGISTER: string = this.URL + 'register';
     return this.client.post<Account>(URL_REGISTER, data);
   }
 
   loginRequest(data: FormData): Observable<string> {
-    const URL_LOGIN: string = this.URL + 'profile/login';
+    const URL_LOGIN: string = this.URL + 'login';
     return this.client.post<string>(URL_LOGIN, data, { responseType: 'text' as 'json' });
   }
 
   getAccountRequest(token: string): Observable<Account> {
     let auth: string = "Bearer " + token;
-    const URL_MY_ACCOUNT: string = this.URL + 'profile/my-account';
+    const URL_MY_ACCOUNT: string = this.URL + 'my-account';
     return this.client.get<Account>(URL_MY_ACCOUNT, { withCredentials: true, headers: { 'Authorization': auth } });
   }
-
+  
+  
 }
