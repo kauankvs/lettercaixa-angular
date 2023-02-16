@@ -19,7 +19,7 @@ export class PostApiService {
 
   deleteAvaliationOfMovie(token: string, movieId: number): Observable<any> {
     let auth: string = "Bearer " + token;
-    const URL_DELETE = this.URL + 'delete/' + movieId;
+    const URL_DELETE = this.URL + 'delete?movieId=' + movieId;
     return this.client.delete(URL_DELETE, { withCredentials: true, headers: { 'Authorization': auth } });
   }
 }
