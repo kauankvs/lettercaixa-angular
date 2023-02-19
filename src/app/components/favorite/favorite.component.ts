@@ -14,37 +14,42 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  favoriteMovies?: Movie[];
-  moviesId?: number[];
+  favoriteMovies?: Movie[] | null;
   
   constructor(private service: FavoritesApiService, private extenalService: ExternalApiMovieService, private storageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     let token = this.storageService.getToken();
-    this.subscribeGetProfileMovies(token);
-    if(typeof this.moviesId != 'undefined')
-      this.favoriteMovies = this.getMoviesByMovieId(this.moviesId);
+    let favMovies = this.subscribeGetProfileMovies(token);
+    if(favMovies != null)
+      this.favoriteMovies = this.getMoviesByMovieId(favMovies);
   }
 
-  subscribeGetProfileMovies(token: string | null) {
+  subscribeGetProfileMovies(token: string | null): number[] | null {
+    let favMovies: number[] | null = null;
     this.service.getProfileFavoriteMovies(token).subscribe({
       next: (data) => {
         console.log(data);
-        this.moviesId = data.movies;
+        favMovies = data.movies;
       },
       error: (data) => console.log(data)
     });
+    return favMovies;
   }
   
-  getMoviesByMovieId(moviesId: number[]): Movie[] {
+  getMoviesByMovieId(moviesId: number[]): Movie[] | null {
     let movies: Movie[] = [];
     moviesId.forEach(id => {
       this.extenalService.getMovieById(id).subscribe(movie => movies.push(movie));
     })
+    
+    if(movies.length === 0)
+      return null;
+
     return movies;
   }
 
-  seeMoviesDetails(): void {
-    this.router.navigate(['/movie/' + null], { queryParams: { query: null } });
+  seeMoviesDetails(id: number): void {
+    this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
   }
 }
