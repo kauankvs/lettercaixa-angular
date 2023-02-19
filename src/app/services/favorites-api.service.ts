@@ -24,7 +24,7 @@ export class FavoritesApiService {
     return this.client.delete(URL_DELETE, {body: movieId, withCredentials: true, headers: { 'Authorization': auth } });
   }
 
-  getProfileFavoriteMovies(token: string): Observable<Favorite> {
+  getProfileFavoriteMovies(token: string | null): Observable<Favorite> {
     let auth: string = "Bearer " + token; 
     const URL_PROFILE_FAV_MOVIES = this.URL + '/profile';
     return this.client.get<Favorite>(URL_PROFILE_FAV_MOVIES, { withCredentials: true, headers: { 'Authorization': auth } });
