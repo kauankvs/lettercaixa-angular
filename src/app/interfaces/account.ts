@@ -8,5 +8,4 @@ export interface Account {
     profilePicture?: string;
     birth: string;
     username: string;
-    favorite?: Favorite;
 }

@@ -1,10 +1,10 @@
-<div class="collection" *ngIf="account != null">
+<div class="collection" *ngIf="favoriteMovies != null">
     <div class="display">
         <img src="https://image.tmdb.org/t/p/w200{{null}}" class="display" (click)="seeMoviesDetails()">
     </div>
 </div>
 
-<div class="container form-padrao rounded not-logged" *ngIf="account == null">
+<div class="container form-padrao rounded not-logged" *ngIf="favoriteMovies == null">
     <h4 class="title-not-logged">User not logged in.</h4>
     <p>If you already have an account - <a routerLink="/login">Login</a></p>
     <p>If you don't have an account - <a routerLink="/register">Create</a></p>
