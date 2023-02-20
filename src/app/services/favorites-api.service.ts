@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Favorite } from '../interfaces/favorite';
+import { ProfileMovie } from '../interfaces/profile-movie';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,16 @@ export class FavoritesApiService {
 
   constructor(private client: HttpClient) { }
 
-  addMovieToFavorites(movieId: number, token: string) {
+  addMovieToFavorites(movie: ProfileMovie, token: string) {
     let auth: string = "Bearer " + token;
     const URL_ADD = this.URL + '/add';
-    return this.client.post(URL_ADD, movieId,{ withCredentials: true, headers: { 'Authorization': auth } });
+    return this.client.post(URL_ADD, movie,{ withCredentials: true, headers: { 'Authorization': auth } });
   }
 
-  deleteMovieFromFavorites(movieId: number, token: string) {
+  deleteMovieFromFavorites(movie: ProfileMovie, token: string) {
     let auth: string = "Bearer " + token; 
     const URL_DELETE = this.URL + '/delete';
-    return this.client.delete(URL_DELETE, {body: movieId, withCredentials: true, headers: { 'Authorization': auth } });
+    return this.client.delete(URL_DELETE, {body: movie, withCredentials: true, headers: { 'Authorization': auth } });
   }
 
   getProfileFavoriteMovies(token: string | null): Observable<Favorite> {

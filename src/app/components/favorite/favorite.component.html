@@ -1,7 +1,7 @@
 <div class="collection" *ngIf="isLogged === true">
     <div *ngFor="let movie of favoriteMovies">
-        <div class="display" *ngIf="movie.poster_path != null">
-            <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" class="display" (click)="seeMoviesDetails(movie.id)">
+        <div class="display" *ngIf="movie.posterPath != null">
+            <img src="https://image.tmdb.org/t/p/w200{{movie.posterPath}}" class="display" (click)="seeMoviesDetails(movie.movieId)">
         </div>
     </div>
 </div>
