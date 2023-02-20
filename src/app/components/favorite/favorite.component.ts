@@ -14,39 +14,30 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  favoriteMovies?: Movie[] | null;
+  isLogged: boolean = false;
+  moviesId: number[] = [];
+  favoriteMovies: Movie[] = [];
   
   constructor(private service: FavoritesApiService, private extenalService: ExternalApiMovieService, private storageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     let token = this.storageService.getToken();
-    let favMovies = this.subscribeGetProfileMovies(token);
-    if(favMovies != null)
-      this.favoriteMovies = this.getMoviesByMovieId(favMovies);
+    this.subscribeGetProfileMovies(token).then(() => this.getMoviesByMovieId(this.moviesId))
   }
 
-  subscribeGetProfileMovies(token: string | null): number[] | null {
-    let favMovies: number[] | null = null;
+  async subscribeGetProfileMovies(token: string | null): Promise<void> {
     this.service.getProfileFavoriteMovies(token).subscribe({
       next: (data) => {
         console.log(data);
-        favMovies = data.movies;
+        this.isLogged = true;
+        this.moviesId = data.movies;
       },
       error: (data) => console.log(data)
     });
-    return favMovies;
   }
   
-  getMoviesByMovieId(moviesId: number[]): Movie[] | null {
-    let movies: Movie[] = [];
-    moviesId.forEach(id => {
-      this.extenalService.getMovieById(id).subscribe(movie => movies.push(movie));
-    })
-    
-    if(movies.length === 0)
-      return null;
-
-    return movies;
+  getMoviesByMovieId(movies: number[]): void {
+    movies.forEach(id => this.extenalService.getMovieById(id).subscribe(movie => this.favoriteMovies.push(movie)));
   }
 
   seeMoviesDetails(id: number): void {
