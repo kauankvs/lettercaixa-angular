@@ -13,13 +13,13 @@ export class FavoritesApiService {
 
   constructor(private client: HttpClient) { }
 
-  addMovieToFavorites(movie: ProfileMovie, token: string) {
+  addMovieToFavorites(movie: ProfileMovie, token: string | null) {
     let auth: string = "Bearer " + token;
     const URL_ADD = this.URL + '/add';
     return this.client.post(URL_ADD, movie,{ withCredentials: true, headers: { 'Authorization': auth } });
   }
 
-  deleteMovieFromFavorites(movie: ProfileMovie, token: string) {
+  deleteMovieFromFavorites(movie: ProfileMovie, token: string | null) {
     let auth: string = "Bearer " + token; 
     const URL_DELETE = this.URL + '/delete';
     return this.client.delete(URL_DELETE, {body: movie, withCredentials: true, headers: { 'Authorization': auth } });
