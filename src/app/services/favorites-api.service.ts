@@ -13,7 +13,7 @@ export class FavoritesApiService {
 
   constructor(private client: HttpClient) { }
 
-  addMovieToFavorites(movie: ProfileMovie, token: string | null) {
+  addMovieToFavorites(movie: ProfileMovie | null, token: string | null) {
     let auth: string = "Bearer " + token;
     const URL_ADD = this.URL + '/add';
     return this.client.post(URL_ADD, movie,{ withCredentials: true, headers: { 'Authorization': auth } });
