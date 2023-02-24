@@ -6,4 +6,10 @@
     padding: 15px 20px;
     margin-top: 5%;
     font-family: Helvetica, sans-serif;   
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+h3 {
+    text-align: center;
 }

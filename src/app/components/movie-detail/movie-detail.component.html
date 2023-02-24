@@ -1,7 +1,12 @@
 <div class="container detail-div">
-    <h3>{{movie?.title}}</h3>
-    <img src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}" alt="">
-    <input type="button" class="btn btn-outline-success" value="Add To Favorites" (click)="addMovieToProfileFavorites(profileMovie)">
+    <div>
+        <img src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}" alt="">
+    </div>
+    <div class="details-content">
+        <h3>{{movie?.title}}</h3>
+        <p>{{movie?.overview}}</p>
+        <input type="button" class="btn btn-outline-success" value="Add To Favorites" (click)="addMovieToProfileFavorites(profileMovie)">
+    </div>
 </div>
 
 

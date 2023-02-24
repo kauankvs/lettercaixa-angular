@@ -1,5 +1,5 @@
 export interface ProfileMovie {
-    movieId: number,
+    id: number,
     title: string,
-    posterPath?: string,
+    poster_path?: string,
 }
