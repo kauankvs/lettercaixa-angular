@@ -9,6 +9,7 @@ import { FavoriteComponent } from './components/favorite/favorite.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { AppComponent } from './app.component';
+import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-movies.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'my-account', component: ProfileComponent},
   {path: 'favorites', component: FavoriteComponent},
   {path: 'search/:search', component: SearchMovieComponent},
+  {path: 'see-also', component: SeeAlsoMoviesComponent}
 ];
 
 @NgModule({

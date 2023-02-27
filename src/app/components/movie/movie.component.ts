@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CollectionMovie } from 'src/app/interfaces/collection-movie';
 import { Movie } from 'src/app/interfaces/movie';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 

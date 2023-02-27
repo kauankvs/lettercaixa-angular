@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 import { Movie } from 'src/app/interfaces/movie';
 import { ProfileMovie } from 'src/app/interfaces/profile-movie';
@@ -15,7 +15,7 @@ export class MovieDetailComponent implements OnInit {
   profileMovie: ProfileMovie | null = null;
   movie?: Movie;
 
-  constructor(private route: ActivatedRoute, private service: ExternalApiMovieService, private favoriteService: FavoritesApiService, private storageService: LocalStorageService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private service: ExternalApiMovieService, private favoriteService: FavoritesApiService, private storageService: LocalStorageService) { }
 
   async ngOnInit(): Promise<void> {
     let id: number | undefined;
@@ -41,6 +41,10 @@ export class MovieDetailComponent implements OnInit {
           window.alert("User not logged in! Please log to add it to your favorites!");
       }
     });
+  }
+
+  seeSimilarMovies(id: number | undefined): void {
+    this.router.navigate(['/see-also'], { queryParams: { id: id } });
   }
 
 }

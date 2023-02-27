@@ -14,6 +14,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
+import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-movies.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SearchMovieComponent } from './components/search-movie/search-movie.com
     ProfileComponent,
     FavoriteComponent,
     SearchMovieComponent,
+    SeeAlsoMoviesComponent,
   ],
   imports: [
     BrowserModule,
