@@ -1,5 +1,7 @@
 <div class="collection">
-    <div class="display" *ngFor="let movie of movies">
-        <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" class="display" (click)="seeMoviesDetails(movie.id)">
+    <div *ngFor="let movie of movies">
+        <div class="display" *ngIf="movie.poster_path != null">
+            <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" class="display" (click)="seeMoviesDetails(movie.id)">
+        </div>
     </div>
 </div>

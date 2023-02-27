@@ -39,4 +39,9 @@ export class ExternalApiMovieService {
     const URL_SEARCH_ARTIST: string = this.TMDB_Url + 'search/person' + '?api_key=' + this.settings.key + '&query=' + artistSearch + '&page=' + page;
     return this.client.get<CollectionPerson>(URL_SEARCH_ARTIST);
   }
+
+  seeSimilarMovies(movieId: number | undefined) {
+    const URL_SIMILAR_MOVIES: string = this.TMDB_Url + 'movie/' + movieId + '/recommendations' +  '?api_key=' + this.settings.key;
+    return this.client.get<CollectionMovie>(URL_SIMILAR_MOVIES);
+  }
 }
