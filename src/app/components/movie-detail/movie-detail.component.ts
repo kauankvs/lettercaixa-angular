@@ -24,7 +24,11 @@ export class MovieDetailComponent implements OnInit {
       next: (movie: Movie) => { 
         console.log(movie);
         this.movie = movie;
-        this.profileMovie = movie;
+        this.profileMovie = { 
+          movieId: movie.id,
+          title: movie.title,
+          posterPath: movie.poster_path,
+        };
       },
       error: (err) => console.error(err),
     });
