@@ -21,7 +21,7 @@ export class MovieComponent implements OnInit {
   }
 
   seeMoviesDetails(id: number): void {
-    this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
+    this.router.navigate(['/movie'], { queryParams: { id: id } });
   }
 
   getMoviesByPage(page: number): void {

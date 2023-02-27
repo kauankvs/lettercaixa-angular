@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'popular', component: MovieComponent, data: { search: 'popular' }},
   {path: 'now-playing', component: MovieComponent, data: { search: 'now_playing' }},
   {path: 'upcoming', component: MovieComponent, data: { search: 'upcoming' }},
-  {path: 'movie/:id', component: MovieDetailComponent},
+  {path: 'movie', component: MovieDetailComponent},
   {path: 'artists', component: ArtistComponent},
   {path: 'my-account', component: ProfileComponent},
   {path: 'favorites', component: FavoriteComponent},
