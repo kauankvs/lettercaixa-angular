@@ -19,10 +19,10 @@ export class FavoritesApiService {
     return this.client.post(URL_ADD, movie,{ withCredentials: true, headers: { 'Authorization': auth } });
   }
 
-  deleteMovieFromFavorites(id: number, token: string | null) {
+  deleteMovieFromFavorites(movie: ProfileMovie, token: string | null): Observable<any> {
     let auth: string = "Bearer " + token; 
     const URL_DELETE = this.URL + '/delete';
-    return this.client.delete(URL_DELETE, {body: id, withCredentials: true, headers: { 'Authorization': auth } });
+    return this.client.delete(URL_DELETE, {body: movie, withCredentials: true, headers: { 'Authorization': auth } });
   }
 
   getProfileFavoriteMovies(token: string | null): Observable<Favorite> {

@@ -2,7 +2,7 @@
     <div *ngFor="let movie of favoriteMovies">
         <div class="display" *ngIf="movie.posterPath != null">
             <img src="https://image.tmdb.org/t/p/w200{{movie.posterPath}}" class="display" (click)="seeMoviesDetails(movie.movieId)">
-            <div class="btn-div" (click)="deleteMovieFromFavorite(movie.movieId)">
+            <div class="btn-div" (click)="deleteMovieFromFavorite(movie)">
                 <div class="botao">
                     <p>remove</p>
                 </div>
