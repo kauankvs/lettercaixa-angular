@@ -1,0 +1,24 @@
+.botao {
+    opacity: 0;
+    height: 25px;
+    width: 100%;
+    background-color: #BF1313;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: hsl(0, 10%, 81%);
+    letter-spacing: 0.25em;
+}
+
+.display {
+    max-height: 340px;
+}
+
+.display:hover .botao { 
+    opacity: 0.65;
+}
+
+.btn-div:hover .botao {
+    opacity: 0.75;
+    color: white;
+}

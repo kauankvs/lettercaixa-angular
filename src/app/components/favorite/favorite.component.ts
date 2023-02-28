@@ -39,4 +39,9 @@ export class FavoriteComponent implements OnInit {
   seeMoviesDetails(id: number): void {
     this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
   }
+
+  deleteMovieFromFavorite(id: number): void {
+    let token = this.storageService.getToken();
+    this.service.deleteMovieFromFavorites(id, token);
+  }
 }
