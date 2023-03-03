@@ -5,8 +5,22 @@
     min-width: 400px;
     height: auto;
     padding: 20px 25px;
-    margin-top: 5%;
+    margin-top: 2%;
     font-family: Helvetica, sans-serif;   
+}
+
+.comment-div {
+    background-color: rgba(255, 255, 255, 0.5);
+    max-width: 40%;
+    min-width: 400px;
+    height: auto;
+    margin-top: 1%;
+    padding: 8px 8px;
+    font-family: Helvetica, sans-serif;   
+}
+
+.comment-text {
+    margin-bottom: 8px;
 }
 
 .detail-grid {
@@ -20,6 +34,10 @@
     text-align: center;
 }
 
+.submit-rating {
+    display: block;
+    margin-top: 5px;
+}
 
 .detail-img {
     min-width: 200px;
