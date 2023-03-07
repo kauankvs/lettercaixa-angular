@@ -6,7 +6,8 @@
     height: auto;
     padding: 20px 25px;
     margin-top: 2%;
-    font-family: Helvetica, sans-serif;   
+    font-family: Helvetica, sans-serif;
+    letter-spacing: 0.05em;   
 }
 
 .comment-div {
@@ -20,6 +21,7 @@
 }
 
 .comment-text {
+    letter-spacing: 0.05em;   
     margin-bottom: 8px;
 }
 
