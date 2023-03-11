@@ -1,4 +1,4 @@
 export interface Post {
-  movieId: number,
+  movieId: number | undefined,
   comment: string | undefined,
 }

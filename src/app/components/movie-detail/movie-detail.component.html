@@ -17,7 +17,7 @@
 </div>
 
 <div class="container comment-div">
-    <form (ngSubmit)="submitCommentAboutMovie()" (keypress.enter)="submitCommentAboutMovie()">
+    <form (ngSubmit)="submitCommentAboutMovie(movie?.id)" (keypress.enter)="submitCommentAboutMovie(movie?.id)">
         <div class="form-group comment-text">
             <label for="comment">Add your commentary about the movie:</label>
             <textarea [(ngModel)]="comment" class="form-control" id="thoughts" rows="3" placeholder="Your thoughts on {{movie?.title}}..."></textarea>
