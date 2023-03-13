@@ -5,8 +5,7 @@ import { Movie } from 'src/app/interfaces/movie';
 import { ProfileMovie } from 'src/app/interfaces/profile-movie';
 import { FavoritesApiService } from 'src/app/services/favorites-api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { PostApiService } from 'src/app/services/post-api.service';
-import { Post } from 'src/app/interfaces/post';
+
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,10 +14,9 @@ import { Post } from 'src/app/interfaces/post';
 })
 export class MovieDetailComponent implements OnInit {
   profileMovie: ProfileMovie | null = null;
-  comment?: string;
   movie?: Movie;
 
-  constructor(private router: Router, private route: ActivatedRoute, private externalService: ExternalApiMovieService, private postService: PostApiService, private favoriteService: FavoritesApiService, private storageService: LocalStorageService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private externalService: ExternalApiMovieService, private favoriteService: FavoritesApiService, private storageService: LocalStorageService) { }
 
   async ngOnInit(): Promise<void> {
     let id: number | undefined;
@@ -54,16 +52,6 @@ export class MovieDetailComponent implements OnInit {
     this.router.navigate(['/see-also'], { queryParams: { id: id } });
   }
 
-  submitCommentAboutMovie(movieId: number | undefined) {
-    let post: Post = {
-      movieId: movieId,
-      comment: this.comment,
-    };
-    let token = this.storageService.getToken();
-    this.postService.addAvaliationToMovie(post, token).subscribe({
-      next: (data) => console.log(data),
-      error: (err) => console.log(err)
-    });
-  }
+  
 
 }

@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-movies.component';
+import { CommentaryComponent } from './components/commentary/commentary.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-mo
     FavoriteComponent,
     SearchMovieComponent,
     SeeAlsoMoviesComponent,
+    CommentaryComponent,
   ],
   imports: [
     BrowserModule,
