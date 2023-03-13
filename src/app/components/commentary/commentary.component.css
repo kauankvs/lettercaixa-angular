@@ -5,10 +5,16 @@
     height: auto;
     margin-top: 1%;
     padding: 8px 8px;
-    font-family: Helvetica, sans-serif;   
+    font-family: Helvetica, sans-serif;
+    border-radius: 5px;   
 }
 
 .comment-text {
     letter-spacing: 0.05em;   
     margin-bottom: 8px;
+}
+
+.load-comments-div {
+    text-align: center;
+    margin: 20px auto;
 }

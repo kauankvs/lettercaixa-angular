@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie';
-import { Post } from 'src/app/interfaces/post';
+import { PostInput } from 'src/app/interfaces/post-input';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { PostApiService } from 'src/app/services/post-api.service';
 
@@ -12,11 +12,12 @@ import { PostApiService } from 'src/app/services/post-api.service';
 export class CommentaryComponent {
   @Input() movie?: Movie;
   comment?: string;
+  loadComments: boolean = false;
 
   constructor(private postService: PostApiService, private storageService: LocalStorageService) { }
 
   submitCommentAboutMovie(movieId: number | undefined) {
-    let post: Post = {
+    let post: PostInput = {
       movieId: movieId,
       comment: this.comment,
     };
@@ -25,5 +26,9 @@ export class CommentaryComponent {
       next: (data) => console.log(data),
       error: (err) => console.log(err)
     });
+  }
+
+  loadMovieComments(): void {
+    this.loadComments = !this.loadComments;
   }
 }

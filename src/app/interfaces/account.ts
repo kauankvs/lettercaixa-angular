@@ -1,5 +1,3 @@
-import { Favorite } from "./favorite";
-
 export interface Account {
     firstName: string;
     lastName: string;

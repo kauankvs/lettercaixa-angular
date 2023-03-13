@@ -1,4 +1,4 @@
-export interface Post {
+export interface PostInput {
   movieId: number | undefined,
   comment: string | undefined,
 }

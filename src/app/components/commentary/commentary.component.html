@@ -7,3 +7,11 @@
         <button type="button" class="btn btn-secondary btn-sm submit-rating">Post comment</button>
     </form>
 </div>
+
+<div class="container load-comments-div">
+    <button class="btn btn-outline-dark" (click)="loadMovieComments()">Load comments</button>
+</div>
+
+<div class="container" *ngIf="loadComments">
+    
+</div>
