@@ -1,17 +1,16 @@
 <div class="container comment-div">
-    <form (ngSubmit)="submitCommentAboutMovie(movie?.id)" (keypress.enter)="submitCommentAboutMovie(movie?.id)">
+    <form (ngSubmit)="submitCommentAboutMovie(movie?.id)">
         <div class="form-group comment-text">
             <label for="comment">Add your commentary about the movie:</label>
-            <textarea [(ngModel)]="comment" class="form-control" id="thoughts" rows="3" placeholder="Your thoughts on {{movie?.title}}..."></textarea>
+            <textarea [(ngModel)]="comment" name="comment" class="form-control" id="thoughts" rows="3" placeholder="Your thoughts on {{movie?.title}}..." NOT NULL></textarea>
         </div>
-        <button type="button" class="btn btn-secondary btn-sm submit-rating">Post comment</button>
+        <button type="submit" class="btn btn-secondary btn-sm submit-rating">Post comment</button>
     </form>
 </div>
 
-<div class="container load-comments-div">
-    <button class="btn btn-outline-dark" (click)="loadMovieComments()">Load comments</button>
+<div class="container load-comments-div" *ngIf="loadComments === false">
+    <button class="btn btn-outline-dark" (click)="loadMovieComments(movie?.id)">Load comments</button>
 </div>
 
-<div class="container" *ngIf="loadComments">
-    
+<div class="container users-comments" *ngIf="loadComments">
 </div>
