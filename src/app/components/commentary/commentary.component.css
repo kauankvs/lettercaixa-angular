@@ -27,5 +27,18 @@
     height: auto;
     padding: 20px 25px;
     margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;   
+}
+
+.comment {
+    border-radius: 5px;   
+    display: grid;
+    width: 100%;
+    height: auto;
+    grid-template-columns: minmax(200px, 220px) minmax(100px, auto);
+    background-color: whitesmoke;
 }
 

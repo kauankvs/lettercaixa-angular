@@ -13,4 +13,12 @@
 </div>
 
 <div class="container users-comments" *ngIf="loadComments">
+    <div class="comment" *ngFor="let review of movieReviews">
+        <div>
+            <p>{{ review.profileId }}</p>
+        </div>
+        <div>
+            <p>{{ review.comment }}</p>
+        </div>
+    </div>
 </div>
