@@ -13,12 +13,13 @@
 </div>
 
 <div class="container users-comments" *ngIf="loadComments">
-    <div class="comment" *ngFor="let review of movieReviews">
+    <div class="comment" *ngFor="let post of moviePosts">
         <div>
-            <p>{{ review.profileId }}</p>
+            <p>{{ post.username }}</p>
+            <img>
         </div>
         <div>
-            <p>{{ review.comment }}</p>
+            <p>{{ post.comment }}</p>
         </div>
     </div>
 </div>

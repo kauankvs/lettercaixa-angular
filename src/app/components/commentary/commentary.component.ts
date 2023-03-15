@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie';
 import { Post } from 'src/app/interfaces/post';
+import { PostDisplay } from 'src/app/interfaces/post-display';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { PostApiService } from 'src/app/services/post-api.service';
 
@@ -13,7 +14,7 @@ export class CommentaryComponent {
   @Input() movie?: Movie;
   comment?: string;
   loadComments: boolean = false;
-  movieReviews: Post[] = [];
+  moviePosts: PostDisplay[] = [];
 
   constructor(private postService: PostApiService, private storageService: LocalStorageService) { }
 
@@ -46,7 +47,7 @@ export class CommentaryComponent {
     this.postService.getAllAvaliationsOfMovie(movieId).subscribe({
       next: (data) => {
         console.log(data);
-        this.movieReviews = data;
+        this.moviePosts = data;
       },
       error: (err) => console.log(err)
     })
