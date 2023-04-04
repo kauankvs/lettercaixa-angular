@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     let token = this.storageService.getToken();
     this.tryToLogInAccount(token);
-    this.storageService.removeTokenAfterExpirationAsync();
   }
  
   tryToLogInAccount(token: string | null): void 

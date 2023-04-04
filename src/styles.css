@@ -8,12 +8,14 @@ body {
     height: 30%;
     padding: 15px 20px;
     margin-top: 10%;
-    font-family: Helvetica, sans-serif;   
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.05em; 
 }
 
 .form-titulo {
     text-align: center;
-    font-family: Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.05em;
     margin-bottom: 20px;
 }
 
@@ -44,8 +46,8 @@ body {
 
 .not-logged {
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 0.05em;
-    font-family: Helvetica, sans-serif;
 }
 
 .title-not-logged {

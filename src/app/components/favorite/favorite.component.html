@@ -1,4 +1,4 @@
-<div class="collection" *ngIf="isLogged === true">
+<div class="collection" *ngIf="isLogged === true && favoriteMovies.length > 0">
     <div *ngFor="let movie of favoriteMovies">
         <div class="display" *ngIf="movie.posterPath != null">
             <img src="https://image.tmdb.org/t/p/w200{{movie.posterPath}}" class="display" (click)="seeMoviesDetails(movie.movieId)">
@@ -9,6 +9,11 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container fav-empty" *ngIf="isLogged === true && favoriteMovies.length === 0">
+    <h1>There is none</h1>
+    <h2>Add movies to your favorites</h2>
 </div>
 
 <div class="container form-padrao rounded not-logged" *ngIf="isLogged === false">

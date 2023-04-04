@@ -22,14 +22,16 @@ export class FavoriteComponent implements OnInit {
 
   ngOnInit(): void {
     let token = this.storageService.getToken();
-    this.subscribeGetProfileMovies(token);
+    if(token != null) {
+      this.isLogged = true;
+      this.subscribeGetProfileMovies(token);
+    }
   }
 
-  async subscribeGetProfileMovies(token: string | null): Promise<void> {
+  async subscribeGetProfileMovies(token: string): Promise<void> {
     this.service.getProfileFavoriteMovies(token).subscribe({
       next: (data) => {
         console.log(data);
-        this.isLogged = true;
         this.favoriteMovies = data.movies;
       },
       error: (data) => console.log(data)

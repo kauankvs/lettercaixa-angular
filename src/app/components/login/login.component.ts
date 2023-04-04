@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountApiService } from 'src/app/services/account-api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -14,7 +15,7 @@ export class LoginComponent {
     password: "",
   });
 
-  constructor(private formBuilder: FormBuilder, private service: AccountApiService, private storageService: LocalStorageService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private service: AccountApiService, private storageService: LocalStorageService) { }
 
   transformInFormData(form: FormGroup): FormData {
     let formData: FormData = new FormData();
@@ -29,10 +30,10 @@ export class LoginComponent {
       next: (token) => 
       {
         localStorage.setItem('Token', token);
-        console.log(token)
+        this.formLogin.reset();
+        this.router.navigate(['/']);
       },
       error: (data) => console.log(data),
     });
-    this.formLogin.reset()
   }
 }
