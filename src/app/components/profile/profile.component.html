@@ -4,9 +4,3 @@
     <p>Email: {{ profile.email }}</p>
     <p>Birth: {{ profile.birth | date: 'dd/MM/yyyy' }}</p>
 </div>
-
-<div class="container form-padrao rounded not-logged" *ngIf="profile == null">
-    <h4 class="title-not-logged">User not logged in.</h4>
-    <p>If you already have an account - <a routerLink="/login">Login</a></p>
-    <p>If you don't have an account - <a routerLink="/register">Create</a></p>
-</div>

@@ -11,13 +11,16 @@
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Account
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div *ngIf="userLogged === false" class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" routerLink="register">Register</a>
-            <a class="dropdown-item" routerLink="login">Login</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="my-account">Profile</a>
+            <a class="dropdown-item" routerLink="login">Login</a>
           </div>
-
+          <div *ngIf="userLogged === true" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="my-account">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logoutFromAccount()">Logout</a>
+          </div>
           <li class="nav-item">
             <a class="nav-link active" routerLink="favorites">Favorite Movies</a>
           </li>

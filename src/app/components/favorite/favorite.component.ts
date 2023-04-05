@@ -15,16 +15,17 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  isLogged: boolean = false;
   favoriteMovies: Array<ProfileMovie> = [];
   
   constructor(private service: FavoritesApiService, private storageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     let token = this.storageService.getToken();
-    if(token != null) {
-      this.isLogged = true;
+    if(token != null) 
       this.subscribeGetProfileMovies(token);
+    else {
+      window.alert('Please log in to see and add favorite movies');
+      this.router.navigateByUrl('/login');
     }
   }
 
@@ -39,7 +40,7 @@ export class FavoriteComponent implements OnInit {
   }
   
   seeMoviesDetails(id: number): void {
-    this.router.navigate(['/movie/' + id], { queryParams: { id: id } });
+    this.router.navigate(['/movie'], { queryParams: { id: id } });
   }
 
   deleteMovieFromFavorite(movie: ProfileMovie): void {

@@ -12,11 +12,16 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class ProfileComponent implements OnInit {
   profile?: Account;
 
-  constructor(private service: AccountApiService, private storageService: LocalStorageService) { }
+  constructor(private service: AccountApiService, private storageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     let token = this.storageService.getToken();
-    this.tryToLogInAccount(token);
+    if(token != null) 
+      this.tryToLogInAccount(token);
+    else {
+      window.alert('Please log in to see your account!');
+      this.router.navigateByUrl('/login');
+    }
   }
  
   tryToLogInAccount(token: string | null): void 

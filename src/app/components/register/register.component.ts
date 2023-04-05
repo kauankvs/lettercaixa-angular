@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Account } from 'src/app/interfaces/account';
 import { AccountApiService } from 'src/app/services/account-api.service';
 
@@ -18,7 +19,7 @@ export class RegisterComponent {
     birth: "",
   });;
 
-  constructor(private formBuilder: FormBuilder, private service: AccountApiService) { }
+  constructor(private formBuilder: FormBuilder, private service: AccountApiService, private router: Router) { }
 
   transformInFormData(form: FormGroup): FormData {
     let formData: FormData = new FormData();
@@ -34,7 +35,10 @@ export class RegisterComponent {
   onSubmitRegister(): void {
     let data: FormData = this.transformInFormData(this.formRegister);
     this.service.registerRequest(data).subscribe({
-      next: (data) => console.log(data),
+      next: (data) => { 
+        console.log(data);
+        this.router.navigateByUrl('/login');
+      },
       error: (data) => console.log(data),
     });
     this.formRegister.reset()
