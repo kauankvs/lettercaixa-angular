@@ -42,3 +42,8 @@
     background-color: whitesmoke;
 }
 
+.no-post :hover {
+    background-color: transparent;
+    color: #343a40;
+}
+

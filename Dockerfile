@@ -1,16 +1,17 @@
-FROM node:18-alpine3.16 as angular
+FROM node:18-alpine as angular
 
 WORKDIR /app
 
 COPY package.json /app
 
-RUN npm install --silent
+RUN npm install
 
 COPY . . 
 
 RUN npm run build
 
+EXPOSE 80
 
-FROM nginx:alpine 
-VOLUME /var/cache/nginx
-COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
+CMD [ "npm", "start" ]
+
+

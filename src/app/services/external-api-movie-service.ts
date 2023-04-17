@@ -5,7 +5,6 @@ import { CollectionMovie } from '../interfaces/collection-movie';
 import { Observable } from 'rxjs';
 import { CollectionPerson } from '../interfaces/collection-person';
 import { Movie } from '../interfaces/movie';
-import { Person } from '../interfaces/person';
 
 @Injectable({
   providedIn: 'root'
