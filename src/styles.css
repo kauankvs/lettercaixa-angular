@@ -67,6 +67,7 @@ body {
     margin-left: 4px;
     margin-right: 4px;
     border: 0;
+    border-radius: 5px;
 }
 
 .page-link:hover {
@@ -75,4 +76,31 @@ body {
 
 .page-link:active {
     background: rgba(0, 0, 0, 0.60);
+}
+
+.detail-div {
+    background-color: rgba(255, 255, 255, 0.5);
+    max-width: 40%;
+    min-width: 400px;
+    height: auto;
+    padding: 20px 25px;
+    margin-top: 2%;
+    font-family: Helvetica, sans-serif;
+    letter-spacing: 0.05em;
+    border-radius: 5px;  
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: minmax(200px, 220px) minmax(100px, auto);
+    padding-bottom: 20px;
+}
+
+.detail-img {
+    min-width: 200px;
+    min-height: 300px;
+}
+
+.detail-content {
+    text-align: center;
 }

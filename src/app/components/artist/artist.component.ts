@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Person } from 'src/app/interfaces/person';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 
@@ -14,7 +15,7 @@ export class ArtistComponent implements OnInit {
   artistSearch?: string;
   searchIsUsed?: boolean;
 
-  constructor(private service: ExternalApiMovieService) { }
+  constructor(private service: ExternalApiMovieService, private router: Router) { }
 
   ngOnInit(): void {
     this.searchIsUsed = false;
@@ -33,6 +34,10 @@ export class ArtistComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
+  showArtistDetails(artistId: number | undefined, posterPath: string | undefined): void {
+    this.router.navigate(['/artist/detail'], { queryParams: { artistId: artistId, poster: posterPath } });
+  } 
 
   getPopularArtist(): void {
     let page = 1;

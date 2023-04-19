@@ -11,6 +11,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { AppComponent } from './app.component';
 import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-movies.component';
 import { HomeComponent } from './components/home/home.component';
+import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'my-account', component: ProfileComponent},
   {path: 'favorites', component: FavoriteComponent},
   {path: 'search/:search', component: SearchMovieComponent},
-  {path: 'see-also', component: SeeAlsoMoviesComponent}
+  {path: 'see-also', component: SeeAlsoMoviesComponent},
+  {path: 'artist/detail', component: ArtistDetailComponent},
 ];
 
 @NgModule({

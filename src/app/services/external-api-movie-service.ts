@@ -5,6 +5,7 @@ import { CollectionMovie } from '../interfaces/collection-movie';
 import { Observable } from 'rxjs';
 import { CollectionPerson } from '../interfaces/collection-person';
 import { Movie } from '../interfaces/movie';
+import { Person } from '../interfaces/person';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,11 @@ export class ExternalApiMovieService {
   seeSimilarMovies(movieId: number | undefined) {
     const URL_SIMILAR_MOVIES: string = this.TMDB_Url + 'movie/' + movieId + '/recommendations' +  '?api_key=' + this.settings.key;
     return this.client.get<CollectionMovie>(URL_SIMILAR_MOVIES);
+  }
+
+  seeArtistDetail(artistId: number): Observable<Person> {
+    const URL_SEARCH_ARTIST: string = this.TMDB_Url + 'person/' + artistId + '?api_key=' + this.settings.key;
+    return this.client.get<Person>(URL_SEARCH_ARTIST);
   }
 
 }

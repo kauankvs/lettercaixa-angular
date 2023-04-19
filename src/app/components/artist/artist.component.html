@@ -4,7 +4,7 @@
 <div class="collection">
     <div *ngFor="let artist of artists">
         <div class="display" *ngIf="artist.profile_path != null">
-            <img src="https://image.tmdb.org/t/p/w200{{artist.profile_path}}" class="display">
+            <img src="https://image.tmdb.org/t/p/w200{{artist.profile_path}}" class="display" (click)="showArtistDetails(artist.id, artist.profile_path)">
         </div>
     </div>
 </div>
