@@ -43,4 +43,5 @@ export class ExternalApiMovieService {
     const URL_SIMILAR_MOVIES: string = this.TMDB_Url + 'movie/' + movieId + '/recommendations' +  '?api_key=' + this.settings.key;
     return this.client.get<CollectionMovie>(URL_SIMILAR_MOVIES);
   }
+
 }

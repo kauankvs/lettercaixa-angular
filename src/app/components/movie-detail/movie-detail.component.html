@@ -7,7 +7,7 @@
             <h3>{{movie?.title}}</h3>
             <p>{{movie?.overview}}</p>
             <div class="btn-detail">
-                <input type="button" class="btn btn-outline-success" value="Add To Favorites" (click)="addMovieToProfileFavorites(profileMovie)">
+                <input type="button" class="btn btn-outline-success" value="Add To Favorites" (click)="addMovieToProfileFavorites(movie?.id)">
             </div>
         </div>
     </div>

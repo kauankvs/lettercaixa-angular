@@ -15,7 +15,7 @@
 <div class="container users-comments" *ngIf="loadComments && moviePosts.length > 0">
     <div class="comment" *ngFor="let post of moviePosts">
         <div>
-            <p>{{ post.username }}</p>
+            <p>{{ post.profile.username }}</p>
             <img>
         </div>
         <div>

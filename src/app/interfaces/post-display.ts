@@ -1,8 +1,12 @@
 export interface PostDisplay {
     profileId: number,
     movieId: number,
-    comment: string,                                                                                                                                                                                                                                        
-    fullName: string,
-    username: string,
-    profilePicture?: string,
+    comment: string,  
+    profile: {                                                                                                                                                                                                                                      
+        username: string,
+        firstName: string,
+        lastName: string,
+        email: string,
+        profilePicture: string,
+    }
 }
