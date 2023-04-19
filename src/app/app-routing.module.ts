@@ -10,8 +10,10 @@ import { SearchMovieComponent } from './components/search-movie/search-movie.com
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { AppComponent } from './app.component';
 import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-movies.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'popular', component: MovieComponent, data: { search: 'popular' }},

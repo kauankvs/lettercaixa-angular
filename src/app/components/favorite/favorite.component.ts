@@ -45,17 +45,6 @@ export class FavoriteComponent implements OnInit {
 
   deleteMovieFromFavorite(movieId: number): void {
     let token = this.storageService.getToken();
-    this.service.deleteMovieFromFavorites(movieId, token).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.reloadCurrentPage();
-      },
-      error: (data) => console.log(data)
-    });
-  }
-
-  reloadCurrentPage(): void {
-    let currentUrl: string = this.router.url;
-    this.router.navigateByUrl(currentUrl);
+    this.service.deleteMovieFromFavorites(movieId, token).subscribe(() => this.router.navigateByUrl('/'));
   }
 }
