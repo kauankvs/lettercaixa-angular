@@ -1,0 +1,13 @@
+input {
+    max-width: 89.5%;
+}
+
+.community-div {
+    display: grid;
+    grid-template-columns: 50% 50%; 
+    margin: auto 5%; 
+}
+
+.active-users-div {
+    display: flex;
+}

@@ -28,7 +28,7 @@ export class AccountApiService {
   }
 
   getAllAccounts(): Observable<Account[]> {
-    const URL_ALL_ACCOUNTS: string = this.URL + 'all';
+    const URL_ALL_ACCOUNTS: string = this.URL;
     return this.client.get<Account[]>(URL_ALL_ACCOUNTS);
   }
 }

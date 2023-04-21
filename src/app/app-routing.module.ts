@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-movies.component';
 import { HomeComponent } from './components/home/home.component';
 import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
+import { CommunityComponent } from './components/community/community.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'search/:search', component: SearchMovieComponent},
   {path: 'see-also', component: SeeAlsoMoviesComponent},
   {path: 'artist/detail', component: ArtistDetailComponent},
+  {path: 'community', component: CommunityComponent},
 ];
 
 @NgModule({

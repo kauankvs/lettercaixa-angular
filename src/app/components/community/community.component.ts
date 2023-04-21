@@ -8,7 +8,8 @@ import { AccountApiService } from 'src/app/services/account-api.service';
   styleUrls: ['./community.component.css']
 })
 export class CommunityComponent implements OnInit {
-  profiles: Account[] | null = null;
+  profiles: Account[] = [];
+  profileSearch?: string;
 
   constructor(private service: AccountApiService) {}
 

@@ -1,1 +1,22 @@
-<p>community works!</p>
+<form class="search-div"  #searchForm="ngForm">
+    <input type="text" [(ngModel)]="profileSearch" name="artistSearch" class="form-control" placeholder="Search users">
+</form>
+<div class="community-div">
+    <div>
+        <h4>Most active users:</h4>
+        <div class="active-users-div" *ngIf="profiles.length > 0">
+            <div *ngFor="let profile of profiles">
+                <div>
+                    <img [src]="profile.profilePicture">
+                </div>
+                <div>
+                    <p>{{ profile.username }}</p>
+                    <p>{{ profile.firstName }} {{ profile.lastName }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>

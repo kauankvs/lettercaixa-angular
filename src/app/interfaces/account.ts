@@ -1,3 +1,5 @@
+import { Post } from "./post";
+
 export interface Account {
     firstName: string;
     lastName: string;
@@ -5,4 +7,6 @@ export interface Account {
     profilePicture?: string;
     birth: string;
     username: string;
+    password?: string,
+    posts?: Post[];
 }

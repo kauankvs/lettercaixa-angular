@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../interfaces/post';
-import { PostDisplay } from '../interfaces/post-display';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +24,8 @@ export class PostApiService {
     return this.client.delete(URL_DELETE, {body: movieId, withCredentials: true, headers: { 'Authorization': auth } });
   }
 
-  getAllAvaliationsOfMovie(movieId: number | undefined): Observable<PostDisplay[]> {
+  getAllAvaliationsOfMovie(movieId: number | undefined): Observable<Post[]> {
     const URL_ALL_COMMENTS = this.URL + movieId;
-    return this.client.get<PostDisplay[]>(URL_ALL_COMMENTS);
+    return this.client.get<Post[]>(URL_ALL_COMMENTS);
   }
 }
