@@ -18,6 +18,7 @@ import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-mo
 import { CommentaryComponent } from './components/commentary/commentary.component';
 import { HomeComponent } from './components/home/home.component';
 import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
+import { CommunityComponent } from './components/community/community.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ArtistDetailComponent } from './components/artist-detail/artist-detail.
     CommentaryComponent,
     HomeComponent,
     ArtistDetailComponent,
+    CommunityComponent,
   ],
   imports: [
     BrowserModule,

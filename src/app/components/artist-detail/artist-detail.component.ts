@@ -10,23 +10,16 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
 })
 export class ArtistDetailComponent implements OnInit {
   artist: Person | undefined;
-  poster: string | undefined;
-
+  
   constructor(private service: ExternalApiMovieService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     let artistId: number | undefined;
-    this.route.queryParams.subscribe(params => { 
-      artistId = params['artistId'];
-      this.poster = params['poster'];
-    });
-    if(typeof(artistId) == 'undefined')
-      return;
-
-    this.subscribeArtistDetail(artistId);  
+    this.route.queryParams.subscribe(params => artistId = params['artistId']);
+    this.subscribeToGetArtistDetail(artistId as number);  
   }
 
-  subscribeArtistDetail(artistId: number): void {
+  subscribeToGetArtistDetail(artistId: number): void {
     this.service.seeArtistDetail(artistId).subscribe({
       next: (data) => {
         console.log(data);

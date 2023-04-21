@@ -19,19 +19,21 @@ export class CommentaryComponent {
   constructor(private postService: PostApiService, private storageService: LocalStorageService) { }
 
   submitCommentAboutMovie(movieId: number | undefined): void {
+    let token = this.storageService.getToken();
+    if(token === null) 
+      return window.alert("Please, log in to post your thoughts on movies!");
+
     if(this.comment == null)
-    {
-      window.alert("Please, write your thoughts to post a review!");
-      return;
-    }
-    if(typeof(movieId) == "undefined")
-      return;
+      return window.alert("Please, write your thoughts to post a review!");
 
     let post: Post = {
-      movieId: movieId,
+      movieId: movieId as number,
       comment: this.comment,
     };
-    let token = this.storageService.getToken();
+    this.subscribeToAddAvaliation(post, token);
+  }
+
+  subscribeToAddAvaliation(post: Post, token: string): void {
     this.postService.addAvaliationToMovie(post, token).subscribe({
       next: (data) => console.log(data),
       error: (err) => { 

@@ -35,8 +35,8 @@ export class ArtistComponent implements OnInit {
     });
   }
 
-  showArtistDetails(artistId: number | undefined, posterPath: string | undefined): void {
-    this.router.navigate(['/artist/detail'], { queryParams: { artistId: artistId, poster: posterPath } });
+  showArtistDetails(artistId: number | undefined): void {
+    this.router.navigate(['/artist/detail'], { queryParams: { artistId: artistId } });
   } 
 
   getPopularArtist(): void {

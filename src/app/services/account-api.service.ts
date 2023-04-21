@@ -26,4 +26,9 @@ export class AccountApiService {
     const URL_MY_ACCOUNT: string = this.URL + 'my-account';
     return this.client.get<Account>(URL_MY_ACCOUNT, { withCredentials: true, headers: { 'Authorization': auth } });
   }
+
+  getAllAccounts(): Observable<Account[]> {
+    const URL_ALL_ACCOUNTS: string = this.URL + 'all';
+    return this.client.get<Account[]>(URL_ALL_ACCOUNTS);
+  }
 }
