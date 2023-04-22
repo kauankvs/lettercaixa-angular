@@ -5,9 +5,47 @@ input {
 .community-div {
     display: grid;
     grid-template-columns: 50% 50%; 
-    margin: auto 5%; 
+    margin: 2% 5.5% auto; 
+}
+
+.users-div {
+    display: block;
+}
+
+h4 {
+    letter-spacing: 0.10em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.img-user {
+    max-width: 120px;
+    min-width: 50px;
+    height: auto;
+}
+
+.user-profile {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: auto;
+    width: 100%;
+    padding: 12px 12px;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;  
+}
+
+.user-info-div {
+    margin-left: 15%;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.10em;
+}
+
+.name-user {
+    font-weight: 700;
 }
 
 .active-users-div {
-    display: flex;
+    background-color: rgba(255, 255, 255, 0.388);
+    border-radius: 5px; 
+    padding: 10px;
 }
