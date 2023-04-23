@@ -1,12 +1,14 @@
-<div class="collection">
-    <div class="display" *ngFor="let filme of filmes">
-        <img src="https://image.tmdb.org/t/p/w200{{filme.poster_path}}" class="display" (click)="seeMoviesDetails(filme.id)">
+<div *ngIf="movies | async as movies">
+    <div class="collection">
+        <div class="display" *ngFor="let movie of movies.results">
+            <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" class="display" (click)="seeMoviesDetails(movie.id)">
+        </div>
     </div>
-</div>
-<div class="nav-pages">
-    <a *ngIf="page - 2 > 0" (click)="getMoviesByPage(page - 2)" class="page-link">{{page - 2}}</a>
-    <a *ngIf="page - 1 > 0" (click)="getMoviesByPage(page - 1)" class="page-link">{{page - 1}}</a>
-    <a (click)="getMoviesByPage(page)" class="page-link">{{page}}</a>
-    <a *ngIf="page + 1 <= totalPages" (click)="getMoviesByPage(page + 1)" class="page-link">{{page + 1}}</a>
-    <a *ngIf="page + 2 <= totalPages" (click)="getMoviesByPage(page + 2)" class="page-link">{{page + 2}}</a>
+    <div class="nav-pages">
+        <a *ngIf="page - 2 > 0" (click)="getMoviesByPage(page - 2)" class="page-link">{{page - 2}}</a>
+        <a *ngIf="page - 1 > 0" (click)="getMoviesByPage(page - 1)" class="page-link">{{page - 1}}</a>
+        <a (click)="getMoviesByPage(page)" class="page-link">{{page}}</a>
+        <a *ngIf="page + 1 <= movies.total_pages" (click)="getMoviesByPage(page + 1)" class="page-link">{{page + 1}}</a>
+        <a *ngIf="page + 2 <= movies.total_pages" (click)="getMoviesByPage(page + 2)" class="page-link">{{page + 2}}</a>
+    </div>
 </div>
