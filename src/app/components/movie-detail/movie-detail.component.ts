@@ -4,6 +4,7 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
 import { Movie } from 'src/app/interfaces/movie';
 import { FavoritesApiService } from 'src/app/services/favorites-api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,21 +13,14 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-  movie?: Movie;
+  movie?: Observable<Movie>;
 
   constructor(private router: Router, private route: ActivatedRoute, private externalService: ExternalApiMovieService, private favoriteService: FavoritesApiService, private storageService: LocalStorageService) { }
 
   async ngOnInit(): Promise<void> {
     let id: number | undefined;
     this.route.queryParams.subscribe(params => id = params['id']);
-    this.externalService.getMovieById(id).subscribe({
-      next: (movie: Movie) => { 
-        console.log(movie);
-        this.movie = movie;
-      },
-      error: (err) => console.error(err),
-    });
-
+    this.movie = this.externalService.getMovieById(id);
   };
 
   addMovieToProfileFavorites(movieId: number | undefined): void {

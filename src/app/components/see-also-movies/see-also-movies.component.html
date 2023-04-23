@@ -1,5 +1,5 @@
-<div class="collection">
-    <div *ngFor="let movie of movies">
+<div class="collection" *ngIf="movies | async as movies">
+    <div *ngFor="let movie of movies.results">
         <div class="display" *ngIf="movie.poster_path != null">
             <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" class="display" (click)="seeMoviesDetails(movie.id)">
         </div>

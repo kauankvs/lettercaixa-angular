@@ -1,18 +1,20 @@
-<form class="search-div" (ngSubmit)="searchArtist(searchForm, 1)" (keypress.enter)="searchArtist(searchForm, 1)" #searchForm="ngForm">
-    <input type="text" [(ngModel)]="artistSearch" name="artistSearch" class="form-control" placeholder="Search artists">
-</form>
-<div class="collection">
-    <div *ngFor="let artist of artists">
-        <div class="display" *ngIf="artist.profile_path != null">
-            <img src="https://image.tmdb.org/t/p/w200{{artist.profile_path}}" class="display" (click)="showArtistDetails(artist.id)">
+<div *ngIf="artists | async as artists">
+    <form class="search-div" (ngSubmit)="searchArtist(searchForm, 1)" (keypress.enter)="searchArtist(searchForm, 1)" #searchForm="ngForm">
+        <input type="text" [(ngModel)]="artistSearch" name="artistSearch" class="form-control" placeholder="Search artists">
+    </form>
+    <div class="collection">
+        <div *ngFor="let artist of artists.results">
+            <div class="display" *ngIf="artist.profile_path != null">
+                <img src="https://image.tmdb.org/t/p/w200{{artist.profile_path}}" class="display" (click)="showArtistDetails(artist.id)">
+            </div>
         </div>
     </div>
-</div>
-<div class="nav-pages" *ngIf="searchIsUsed">
-    <a *ngIf="page - 2 > 0" (click)="searchArtist(searchForm, page - 2)" class="page-link">{{page - 2}}</a>
-    <a *ngIf="page - 1 > 0" (click)="searchArtist(searchForm, page - 1)" class="page-link">{{page - 1}}</a>
-    <a (click)="searchArtist(searchForm, page)" class="page-link">{{page}}</a>
-    <a *ngIf="page + 1 <= totalPages" (click)="searchArtist(searchForm, page + 1)" class="page-link">{{page + 1}}</a>
-    <a *ngIf="page + 2 <= totalPages" (click)="searchArtist(searchForm, page + 2)" class="page-link">{{page + 2}}</a>
+    <div class="nav-pages" *ngIf="searchIsUsed">
+        <a *ngIf="page - 2 > 0" (click)="searchArtist(searchForm, page - 2)" class="page-link">{{page - 2}}</a>
+        <a *ngIf="page - 1 > 0" (click)="searchArtist(searchForm, page - 1)" class="page-link">{{page - 1}}</a>
+        <a (click)="searchArtist(searchForm, page)" class="page-link">{{page}}</a>
+        <a *ngIf="page + 1 <= artists.total_pages" (click)="searchArtist(searchForm, page + 1)" class="page-link">{{ page + 1 }}</a>
+        <a *ngIf="page + 2 <= artists.total_pages" (click)="searchArtist(searchForm, page + 2)" class="page-link">{{ page + 2 }}</a>
+    </div>
 </div>
 

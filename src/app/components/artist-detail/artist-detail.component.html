@@ -1,4 +1,4 @@
-<div class="container detail-div">
+<div *ngIf="artist | async as artist" class="container detail-div">
     <div class="detail-grid">
         <div class="detail-img">
             <img src="https://image.tmdb.org/t/p/w200/{{artist?.profile_path}}">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CollectionPerson } from 'src/app/interfaces/collection-person';
 import { Person } from 'src/app/interfaces/person';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 
@@ -11,7 +13,7 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
 export class ArtistComponent implements OnInit {
   page: number = 1;
   totalPages: number = 1;
-  artists: Person[] = [];
+  artists?: Observable<CollectionPerson>;
   artistSearch?: string;
   searchIsUsed?: boolean;
 
@@ -24,15 +26,8 @@ export class ArtistComponent implements OnInit {
 
   searchArtist(searchForm: any, page: number): void {
     this.searchIsUsed = true;
-    this.service.searchArtist(this.artistSearch, page).subscribe({
-      next: (data) => { 
-        console.log(data);
-        this.artists = data.results;
-        this.page = page;
-        this.totalPages = data.total_pages;
-      },
-      error: (err) => console.log(err),
-    });
+    this.artists = this.service.searchArtist(this.artistSearch, page);
+    this.page = page;
   }
 
   showArtistDetails(artistId: number | undefined): void {
@@ -41,14 +36,7 @@ export class ArtistComponent implements OnInit {
 
   getPopularArtist(): void {
     let page = 1;
-    this.service.getPopularArtists(page).subscribe({
-      next: (data) => {
-        this.artists = data.results;
-        this.page = page;
-        console.log(data);
-      },
-      error: (err) => console.log(err),
-    });
+    this.artists = this.service.getPopularArtists(page);
   }
 }
 

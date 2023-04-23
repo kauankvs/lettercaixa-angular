@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CollectionMovie } from 'src/app/interfaces/collection-movie';
 import { Movie } from 'src/app/interfaces/movie';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 
@@ -10,9 +12,8 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
 })
 export class SearchMovieComponent implements OnInit {
   query?: string | undefined;
-  movies?: Movie[];
   page: number = 1;
-  totalPages: number = 0;
+  movies?: Observable<CollectionMovie>;
 
   constructor(private route: ActivatedRoute, private router: Router, private service: ExternalApiMovieService) { }
 
@@ -26,15 +27,8 @@ export class SearchMovieComponent implements OnInit {
 
   getMoviesByPage(page: number): void {
     this.route.queryParams.subscribe(params => this.query = params['query']);
-    this.service.searchForMovie(this.query, page).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.movies = data.results;
-        this.totalPages = data.total_pages;
-        this.page = page;
-      },
-      error: (err) => console.error(err),
-    });
+    this.movies = this.service.searchForMovie(this.query, page);
+    this.page = page;
   }
   
 }

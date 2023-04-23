@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Person } from 'src/app/interfaces/person';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 
@@ -9,7 +10,7 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
   styleUrls: ['./artist-detail.component.css']
 })
 export class ArtistDetailComponent implements OnInit {
-  artist: Person | undefined;
+  artist?: Observable<Person>;
   
   constructor(private service: ExternalApiMovieService, private route: ActivatedRoute) {}
 
@@ -20,13 +21,7 @@ export class ArtistDetailComponent implements OnInit {
   }
 
   subscribeToGetArtistDetail(artistId: number): void {
-    this.service.seeArtistDetail(artistId).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.artist = data;
-      },
-      error: (err) => console.log(err),
-    })
+    this.artist = this.service.seeArtistDetail(artistId);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Movie } from 'src/app/interfaces/movie';
+import { Observable } from 'rxjs';
+import { CollectionMovie } from 'src/app/interfaces/collection-movie';
 import { ExternalApiMovieService } from 'src/app/services/external-api-movie-service';
 
 @Component({
@@ -9,20 +10,14 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
   styleUrls: ['./see-also-movies.component.css']
 })
 export class SeeAlsoMoviesComponent implements OnInit {
-  movies: Movie[] = [];
+  movies?: Observable<CollectionMovie>;
 
   constructor(private service: ExternalApiMovieService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let id: number | undefined;
     this.route.queryParams.subscribe(params => id = params['id']);
-    this.service.seeSimilarMovies(id).subscribe({
-      next: (data) => { 
-        this.movies = data.results;
-        console.log(data); 
-      },
-      error: (err) => console.error(err),
-    })
+    this.movies = this.service.seeSimilarMovies(id);
   }
 
   seeMoviesDetails(id: number): void {
