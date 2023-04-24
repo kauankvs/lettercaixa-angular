@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable, Subscribable, Subscription } from 'rxjs';
 import { AccountApiService } from 'src/app/services/account-api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -9,31 +10,23 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  formLogin: FormGroup = this.formBuilder.group({
-    email: "",
-    password: "",
-  });
-
+export class LoginComponent implements OnDestroy {
+  loginSub?: Subscription;
+  email: string = "";
+  password: string = "";
+  
   constructor(private router: Router, private formBuilder: FormBuilder, private service: AccountApiService, private storageService: LocalStorageService) { }
 
-  transformInFormData(form: FormGroup): FormData {
-    let formData: FormData = new FormData();
-    formData.append('email', form.get('email')?.value);
-    formData.append('password', form.get('password')?.value);
-    return formData;
+  onSubmitLogin(loginForm: NgForm): void {
+    this.loginSub = this.service.loginRequest(this.email, this.password).subscribe((token) => {
+      localStorage.setItem('Token', token);
+      this.router.navigate(['/']);
+    });
+    setTimeout(() => loginForm.resetForm(), 350);
   }
 
-  onSubmitLogin(): void {
-    let data: FormData = this.transformInFormData(this.formLogin);
-    this.service.loginRequest(data).subscribe({
-      next: (token) => 
-      {
-        localStorage.setItem('Token', token);
-        this.formLogin.reset();
-        this.router.navigate(['/']);
-      },
-      error: (data) => console.log(data),
-    });
+  ngOnDestroy(): void {
+    this.loginSub?.unsubscribe();
   }
+
 }

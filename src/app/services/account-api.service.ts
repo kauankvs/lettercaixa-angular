@@ -16,9 +16,9 @@ export class AccountApiService {
     return this.client.post<Account>(URL_REGISTER, data);
   }
 
-  loginRequest(data: FormData): Observable<string> {
+  loginRequest(emailInput: string, passwordInput: string): Observable<string> {
     const URL_LOGIN: string = this.URL + 'login';
-    return this.client.post<string>(URL_LOGIN, data, { responseType: 'text' as 'json' });
+    return this.client.post<string>(URL_LOGIN, { email: emailInput, password: passwordInput }, { responseType: 'text' as 'json' });
   }
 
   getAccountRequest(token: string): Observable<Account> {
