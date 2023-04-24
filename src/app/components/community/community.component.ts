@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Account } from 'src/app/interfaces/account';
 import { AccountApiService } from 'src/app/services/account-api.service';
 
@@ -8,7 +9,7 @@ import { AccountApiService } from 'src/app/services/account-api.service';
   styleUrls: ['./community.component.css']
 })
 export class CommunityComponent implements OnInit {
-  profiles: Account[] = [];
+  profiles?: Observable<Account[]>;
   profileSearch?: string;
 
   constructor(private service: AccountApiService) {}
@@ -18,13 +19,7 @@ export class CommunityComponent implements OnInit {
   }
 
   getUsersOrderedByPostsQuantity() {
-    this.service.getAllAccounts().subscribe({
-      next: (data) => {
-        this.profiles = data.sort(p => p.posts?.length as number);
-        console.log(this.profiles);
-      },
-      error: (err) => console.log(err),
-    })
+    this.profiles = this.service.getAllAccounts();
   }
   
 }

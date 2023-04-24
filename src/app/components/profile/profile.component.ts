@@ -11,7 +11,6 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile?: Account;
   account?: Observable<Account>;
 
   constructor(private service: AccountApiService, private storageService: LocalStorageService, private router: Router) { }

@@ -12,20 +12,20 @@
     <button class="btn btn-outline-dark" (click)="loadMovieComments(movie?.id)">Load comments</button>
 </div>
 
-<div class="container users-comments" *ngIf="loadComments && moviePosts.length > 0">
-    <div class="comment" *ngFor="let post of moviePosts">
-        <div>
-            <p>{{ post.profile?.username }}</p>
-            <img>
-        </div>
-        <div>
-            <p>{{ post.comment }}</p>
+<div *ngIf="moviePosts | async as moviePosts">
+    <div class="container users-comments" *ngIf="loadComments && moviePosts.length > 0">
+        <div class="comment" *ngFor="let post of moviePosts">
+            <div>
+                <p>{{ post.profile?.username }}</p>
+                <img>
+            </div>
+            <div>
+                <p>{{ post.comment }}</p>
+            </div>
         </div>
     </div>
+    <div class="container load-comments-div no-post" *ngIf="loadComments && moviePosts.length === 0">
+        <button class="btn btn-outline-dark">Be the first to comment...</button>
+    </div>
 </div>
-
-<div class="container load-comments-div no-post" *ngIf="loadComments && moviePosts.length === 0">
-    <button class="btn btn-outline-dark">Be the first to comment...</button>
-</div>
-
 

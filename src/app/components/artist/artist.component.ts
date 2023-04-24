@@ -12,7 +12,6 @@ import { ExternalApiMovieService } from 'src/app/services/external-api-movie-ser
 })
 export class ArtistComponent implements OnInit {
   page: number = 1;
-  totalPages: number = 1;
   artists?: Observable<CollectionPerson>;
   artistSearch?: string;
   searchIsUsed?: boolean;

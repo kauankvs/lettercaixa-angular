@@ -1,25 +1,25 @@
-<div>
-<form class="search-div"  #searchForm="ngForm">
-    <input type="text" [(ngModel)]="profileSearch" name="artistSearch" class="form-control" placeholder="Search users">
-</form>
-<div class="community-div">
-    <div class="active-users-div">
-        <h4>Most active users:</h4>
-        <div class="users-div" *ngIf="profiles.length > 0">
-            <div class="user-profile" *ngFor="let profile of profiles">
-                <div>
-                    <img *ngIf="profile.profilePicture == null" class="img-user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png">
-                    <img *ngIf="profile.profilePicture != null" class="img-user" [src]="profile.profilePicture">
-                </div>
-                <div class="user-info-div"> 
-                    <p class="name-user">{{ profile.firstName }} {{ profile.lastName }}</p>
-                    <p>{{ profile.username }}</p>
+<div *ngIf="profiles | async as profiles">
+    <form class="search-div"  #searchForm="ngForm">
+        <input type="text" [(ngModel)]="profileSearch" name="artistSearch" class="form-control" placeholder="Search users">
+    </form>
+    <div class="community-div">
+        <div class="active-users-div">
+            <h4>Most active users:</h4>
+            <div class="users-div" *ngIf="profiles.length > 0">
+                <div class="user-profile" *ngFor="let profile of profiles">
+                    <div>
+                        <img *ngIf="profile.profilePicture == null" class="img-user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png">
+                        <img *ngIf="profile.profilePicture != null" class="img-user" [src]="profile.profilePicture">
+                    </div>
+                    <div class="user-info-div"> 
+                        <p class="name-user">{{ profile.firstName }} {{ profile.lastName }}</p>
+                        <p>{{ profile.username }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <div>
 
     </div>
-</div>
+    </div>
 </div>

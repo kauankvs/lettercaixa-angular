@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Movie } from 'src/app/interfaces/movie';
 import { Post } from 'src/app/interfaces/post';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -13,7 +14,7 @@ export class CommentaryComponent {
   @Input() movie?: Movie;
   comment?: string;
   loadComments: boolean = false;
-  moviePosts: Post[] = [];
+  moviePosts?: Observable<Post[]>;
 
   constructor(private postService: PostApiService, private storageService: LocalStorageService) { }
 
@@ -45,12 +46,6 @@ export class CommentaryComponent {
 
   loadMovieComments(movieId: number | undefined): void {
     this.loadComments = !this.loadComments;
-    this.postService.getAllAvaliationsOfMovie(movieId).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.moviePosts = data;
-      },
-      error: (err) => console.log(err)
-    })
+    this.moviePosts = this.postService.getAllAvaliationsOfMovie(movieId);
   }
 }
