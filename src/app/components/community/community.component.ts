@@ -15,10 +15,10 @@ export class CommunityComponent implements OnInit {
   constructor(private service: AccountApiService) {}
 
   ngOnInit(): void {
-    this.getUsersOrderedByPostsQuantity();
+    this.getAllUsers();
   }
 
-  getUsersOrderedByPostsQuantity() {
+  getAllUsers() {
     this.profiles = this.service.getAllAccounts();
   }
   
