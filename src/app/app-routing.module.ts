@@ -13,6 +13,7 @@ import { SeeAlsoMoviesComponent } from './components/see-also-movies/see-also-mo
 import { HomeComponent } from './components/home/home.component';
 import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
 import { CommunityComponent } from './components/community/community.component';
+import { SearchProfileComponent } from './components/search-profile/search-profile.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,7 +30,7 @@ const routes: Routes = [
   {path: 'see-also', component: SeeAlsoMoviesComponent},
   {path: 'artist/detail', component: ArtistDetailComponent},
   {path: 'community', component: CommunityComponent},
-  {path: 'profiles', component: ProfileComponent},
+  {path: 'profiles', component: SearchProfileComponent},
 ];
 
 @NgModule({
