@@ -19,6 +19,7 @@ import { CommentaryComponent } from './components/commentary/commentary.componen
 import { HomeComponent } from './components/home/home.component';
 import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
 import { CommunityComponent } from './components/community/community.component';
+import { SearchProfileComponent } from './components/search-profile/search-profile.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CommunityComponent } from './components/community/community.component';
     HomeComponent,
     ArtistDetailComponent,
     CommunityComponent,
+    SearchProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,6 +29,7 @@ const routes: Routes = [
   {path: 'see-also', component: SeeAlsoMoviesComponent},
   {path: 'artist/detail', component: ArtistDetailComponent},
   {path: 'community', component: CommunityComponent},
+  {path: 'profiles', component: ProfileComponent},
 ];
 
 @NgModule({

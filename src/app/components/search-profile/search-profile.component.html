@@ -1,0 +1,20 @@
+<form class="search-div"  #searchForm="ngForm" (keyup.enter)="searchProfiles(searchForm)">
+    <input type="text" [(ngModel)]="profileSearch" name="profileSearch" class="form-control" placeholder="Search users">
+</form>
+<div class="community-div">
+
+    <div class="active-users-div" *ngIf="profiles | async as profiles">
+        <div class="users-div" *ngIf="profiles.length > 0">
+            <div class="user-profile" *ngFor="let profile of profiles">
+                <div>
+                    <img *ngIf="profile.profilePicture == null" class="img-user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png">
+                    <img *ngIf="profile.profilePicture != null" class="img-user" [src]="profile.profilePicture">
+                </div>
+                <div class="user-info-div"> 
+                    <p class="name-user">{{ profile.firstName }} {{ profile.lastName }}</p>
+                    <p>{{ profile.username }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<div>
