@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../interfaces/post';
+import { Settings } from '../settings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostApiService {
 
-  URL: string = 'https://localhost:7278/api/post/'
+  URL: string = Settings.apiAdress + '/api/post/'
 
   constructor(private client: HttpClient) { }
   

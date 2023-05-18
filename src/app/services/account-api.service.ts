@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from '../interfaces/account';
+import { Settings } from '../settings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountApiService {
-  URL: string = 'https://localhost:7278/api/profile/'
+  URL: string = Settings.apiAdress + '/api/profile/'
 
   constructor(private client: HttpClient) { }
 

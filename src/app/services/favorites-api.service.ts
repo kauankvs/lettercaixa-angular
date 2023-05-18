@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Settings } from '../settings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesApiService {
 
-  URL: string = 'https://localhost:7278/api/favorites';
+  URL: string = Settings.apiAdress + '/api/favorites';
 
   constructor(private client: HttpClient) { }
 
