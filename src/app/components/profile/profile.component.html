@@ -1,4 +1,6 @@
 <div class="container form-padrao" *ngIf="account | async as account">
+    <img *ngIf="account.profilePicture == null" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" class="profile-picture" alt="...">
+    <img *ngIf="account.profilePicture" src="{{account.profilePicture}}" class="profile-picture" alt="...">
     <p>Username: {{ account.username }}</p>
     <p>Nome: {{ account.firstName }} {{ account.lastName }} </p>
     <p>Email: {{ account.email }} </p>
