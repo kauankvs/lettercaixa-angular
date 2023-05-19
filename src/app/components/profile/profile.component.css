@@ -14,4 +14,9 @@
 
 .profile-picture:hover {
     filter: brightness(75%);
+    color: black;
+}
+
+.profile-picture:active {
+    filter: brightness(50%);
 }

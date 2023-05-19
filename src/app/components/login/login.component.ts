@@ -31,7 +31,7 @@ export class LoginComponent {
       {
         localStorage.setItem('Token', token);
         this.formLogin.reset();
-        this.router.navigate(['/']);
+        location.href = "/"
       },
       error: (data) => console.log(data),
     });

@@ -1,0 +1,10 @@
+<div class="form-picture">
+    <form (keyup.enter)="addPicture()" (ngSubmit)="addPicture()">
+        <div class="form-row"> 
+            <div class="form-group col-md-12">
+                <input type="text" [(ngModel)]="imgURL" id="imgURL" name="imgURL" class="form-control" placeholder="Profile Picture URL">
+            </div>
+        </div>
+        <input type="submit" class="btn btn-secondary btn-sm" value="Change photo">
+    </form>
+</div>

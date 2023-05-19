@@ -12,6 +12,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class ProfileComponent implements OnInit {
   account?: Observable<Account>;
+  pictureFormActive: boolean = false;
 
   constructor(private service: AccountApiService, private storageService: LocalStorageService, private router: Router) { }
 
@@ -23,6 +24,10 @@ export class ProfileComponent implements OnInit {
       window.alert('Please log in to see your account!');
       this.router.navigateByUrl('/login');
     }
+  }
+
+  showPictureForm(): void {
+    this.pictureFormActive = !this.pictureFormActive;
   }
  
 }

@@ -30,6 +30,6 @@ export class NavegationComponent implements OnInit {
   logoutFromAccount(): void { 
     this.localStorage.removeToken();
     this.userLogged = false;
-    this.router.navigateByUrl('/');
+    location.href = "/"
   }
 }
