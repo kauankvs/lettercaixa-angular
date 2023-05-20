@@ -29,12 +29,19 @@ export class AccountApiService {
   }
 
   getAllAccounts(): Observable<Account[]> {
-    const URL_ALL_ACCOUNTS: string = this.URL;
+    const URL_ALL_ACCOUNTS: string = this.URL + 'all';
     return this.client.get<Account[]>(URL_ALL_ACCOUNTS);
   }
 
   getAccountsByName(name: string): Observable<Account[]> {
     const URL_GET_ACCOUNTS_BY_NAME: string = this.URL + 'profiles/' + name;
     return this.client.get<Account[]>(URL_GET_ACCOUNTS_BY_NAME);
+  }
+
+  addOrUpdatePicture(pictureUrl: string, token: string): Observable<Account> {
+    let auth: string = "Bearer " + token;
+    const URL_ADD_OR_UPDATE_PICTURE: string = this.URL + 'profile-picture'
+    const body = JSON.stringify(pictureUrl);
+    return this.client.put<Account>(URL_ADD_OR_UPDATE_PICTURE, body, { withCredentials: true, headers: { 'Authorization': auth, 'Content-Type': 'application/json' } });
   }
 }
